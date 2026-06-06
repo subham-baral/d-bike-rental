@@ -1,0 +1,8 @@
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import Banner from '../../sections/common/Banner';
+import Link from 'next/link';
+import { testimonialData } from '../../all-content/testimonials/testimonialsData';
+const Testimonials = () => {
+    return (_jsxs(_Fragment, { children: [_jsx(Banner, { breadcrumb: 'Testimonials' }), _jsx("div", { className: "testimonials-page", children: _jsx("div", { className: "container", children: _jsx("div", { className: "row", children: testimonialData.map((testimonial) => _jsx("div", { className: "col-xl-4 col-lg-6 col-md-6", children: _jsxs("div", { className: "testimonial-one__single", children: [_jsxs("div", { className: "testimonial-one__client-info", children: [_jsx("div", { className: "testimonial-one__img", children: _jsx("img", { src: testimonial?.image, alt: "testimonial image" }) }), _jsxs("div", { className: "testimonial-one__content", children: [_jsx("h4", { className: "testimonial-one__client-name", children: _jsx(Link, { href: testimonial?.link, children: testimonial?.name }) }), _jsx("p", { className: "testimonial-one__sub-title", children: testimonial?.role })] })] }), _jsx("p", { className: "testimonial-one__text", children: testimonial?.text }), _jsx("div", { className: "testimonial-one__rating", children: Array.from({ length: testimonial?.rating }).map((_, index) => (_jsx("span", { className: "icon-star" }, index))) }), _jsx("div", { className: "testimonial-one__quote", children: _jsx("span", { className: "icon-quote" }) })] }) }, testimonial?.id)) }) }) })] }));
+};
+export default Testimonials;
