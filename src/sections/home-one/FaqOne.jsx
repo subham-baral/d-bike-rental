@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import faqImg from "../../assets/images/resources/faq-one-img-1.jpg";
 import sectionShape from "../../assets/images/shapes/section-title-tagline-shape-1.png";
 import { faqData } from "../../all-content/faq/faqData";
 import { motion } from "framer-motion";
 import TextAnimation from "../../components/elements/TextAnimation";
+import AdvanceCountUp from "../../components/elements/AdvanceCountUp";
 const FaqOne = () => {
   const [isActiveFaq, setIsActiveFaq] = useState(2);
   return <section className="faq-one">
@@ -44,18 +44,8 @@ const FaqOne = () => {
               amount: 0.05,
               once: true
             }} className="faq-one__img-box">
-                                <div className="faq-one__img">
-                                    <img src={faqImg.src} alt="FAQ" />
-                                </div>
-                                <div className="faq-one__experience-box">
-                                    <div className="faq-one__experience-year">
-                                        <h2 className="odometer" data-count="10">
-                                            10
-                                        </h2>
-                                    </div>
-                                    <p className="faq-one__experience-text">
-                                        Year of <br /> experience
-                                    </p>
+                                <div className="faq-one__img" style={{ width: '100%', paddingRight: '20px' }}>
+                                    <img src="/all-veichle-banner-for-faq.png" alt="FAQ" style={{ width: '100%', borderRadius: 'var(--gorent-bdr-radius)' }} />
                                 </div>
                             </motion.div>
                         </div>

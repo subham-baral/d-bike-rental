@@ -105,7 +105,7 @@ const BannerOne = () => {
             </div>
 
             {/* Static Booking Form Overlay */}
-            <div className="container booking-one" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 10, pointerEvents: 'none', display: 'flex', alignItems: 'center' }}>
+            <div className="container booking-one banner-booking-container">
                 <div className="row w-100 mx-0">
                     <div className="col-xl-4 offset-xl-8 col-lg-5 offset-lg-7" style={{ pointerEvents: 'auto' }}>
                         <motion.div initial={{ x: 80, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.6, ease: "easeOut" }} viewport={{ amount: 0.01, once: true }} className="booking-one__right wow slideInRight">
@@ -118,7 +118,7 @@ const BannerOne = () => {
 
                                 <form className="booking-one__form" onSubmit={handleSubmit}>
                                     <div className="row">
-                                        <div className="col-xl-6 col-lg-6 col-md-6">
+                                        <div className="col-xl-6 col-lg-6 col-md-6 col-6">
                                             <div className="booking-one__input-box" style={{ marginBottom: '15px' }}>
                                                 <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="icon-pin-2" style={{ marginRight: "5px" }}></span> Pickup</p>
                                                 <div className="select-box">
@@ -126,7 +126,7 @@ const BannerOne = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-xl-6 col-lg-6 col-md-6">
+                                        <div className="col-xl-6 col-lg-6 col-md-6 col-6">
                                             <div className="booking-one__input-box" style={{ marginBottom: '15px' }}>
                                                 <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="icon-pin-2" style={{ marginRight: "5px" }}></span> Drop off</p>
                                                 <div className="select-box">
@@ -134,7 +134,7 @@ const BannerOne = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-xl-6 col-lg-6 col-md-6">
+                                        <div className="col-xl-6 col-lg-6 col-md-6 col-6">
                                             <div className="booking-one__input-box" style={{ marginBottom: '15px' }}>
                                                 <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><img src="/icon/motorcross.png" alt="icon" style={{ width: "20px", marginRight: "5px" }} /> Vehicle type</p>
                                                 <div className="select-box">
@@ -142,7 +142,7 @@ const BannerOne = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-xl-6 col-lg-6 col-md-6">
+                                        <div className="col-xl-6 col-lg-6 col-md-6 col-6">
                                             <div className="booking-one__input-box" style={{ marginBottom: '15px' }}>
                                                 <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="icon-date" style={{ marginRight: "5px" }}></span> Date</p>
                                                 <input type="date" value={date} onChange={e => setDate(e.target.value)} />

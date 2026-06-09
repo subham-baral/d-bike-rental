@@ -130,15 +130,17 @@ const ListingOne = () => {
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                        <div className="listing-one__car-rent-box">
-                                                            <p className="listing-one__car-rent">Starting From
-                                                                <span>${item?.pricePerDay || 100}/</span> Day</p>
-                                                        </div>
-                                                        <div className="listing-one__btn-box">
-                                                            <Link href={item?.link || "/listing-single"} className="thm-btn">
-                                                                Details Now
-                                                                <span className="fas fa-arrow-right"></span>
-                                                            </Link>
+                                                        <div className="listing-one__bottom-flex">
+                                                            <div className="listing-one__car-rent-box">
+                                                                <p className="listing-one__car-rent">Starting From
+                                                                    <span>${item?.pricePerDay || 100}/</span> Day</p>
+                                                            </div>
+                                                            <div className="listing-one__btn-box">
+                                                                <Link href={item?.link || "/listing-single"} className="thm-btn">
+                                                                    Details Now
+                                                                    <span className="fas fa-arrow-right"></span>
+                                                                </Link>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

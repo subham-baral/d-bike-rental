@@ -39,9 +39,9 @@ const MobileNav = () => {
                         <i className="fas fa-phone"></i>
                         <a href="tel:+918112003520">+91 81120 03520</a>
                     </li>
-                    <li style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '15px' }}>
-                        <i className="fas fa-map-marker-alt" style={{ marginRight: '10px' }}></i>
-                        Gopal Ballabh Rd, near Shakuntala Palace, near Puri Railway station, Puri, Odisha 752001
+                    <li style={{ fontSize: '15px', display: 'flex', alignItems: 'flex-start' }}>
+                        <i className="fas fa-map-marker-alt" style={{ marginRight: '10px', marginTop: '4px', flexShrink: 0 }}></i>
+                        <span>Gopal Ballabh Rd, near Shakuntala Palace, near Puri Railway station, Puri, Odisha 752001</span>
                     </li>
                 </ul>
                 <div className="mobile-nav__top">

@@ -74,7 +74,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+            <div className="col-xl-2 col-lg-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="200ms">
               <div className="footer-widget__links">
                 <h4 className="footer-widget__title">Quick links</h4>
                 <ul className="footer-widget__links-list list-unstyled">
@@ -94,7 +94,7 @@ const Footer = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+            <div className="col-xl-3 col-lg-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="400ms">
               <div className="footer-widget__services">
                 <h4 className="footer-widget__title">Company</h4>
                 <ul className="footer-widget__links-list list-unstyled">
