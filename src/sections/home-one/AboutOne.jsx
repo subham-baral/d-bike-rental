@@ -13,8 +13,10 @@ import AdvanceCountUp from "../../components/elements/AdvanceCountUp";
 import TextAnimation from "../../components/elements/TextAnimation";
 import { motion } from "framer-motion";
 import Link from 'next/link';
-const AboutOne = () => {
-  return <section className="about-one" id="about">
+const AboutOne = ({ sectionClass = "" }) => {
+  const className = ["about-one", sectionClass].filter(Boolean).join(" ");
+
+  return <section className={className} id="about">
       <div className="container">
         <div className="row">
           {/* Left Side */}

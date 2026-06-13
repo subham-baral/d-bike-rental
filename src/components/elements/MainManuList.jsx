@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname as useLocation } from 'next/navigation';
-import { blogs_link, cars_link } from '../link-content/NavLink';
+import { blogs_link } from '../link-content/NavLink';
 import MobileManuListSingle from './MobileManuListSingle';
 
 const MainManuList = ({ onePageManuList }) => {
@@ -26,15 +26,8 @@ const MainManuList = ({ onePageManuList }) => {
       <li className={currentPath === "/about" ? "current" : ""}>
         <Link href="/about">About Us</Link>
       </li>
-      <li className={`dropdown ${findLocation(cars_link) ? "current" : ""}`}>
-        <a href="#">Vehicles</a>
-        <ul className="shadow-box">
-          {cars_link.map(Item => (
-            <li key={Item?.id} className={currentPath === Item?.link ? "current" : ""}>
-              <Link href={Item?.link}>{Item?.value}</Link>
-            </li>
-          ))}
-        </ul>
+      <li className={currentPath === "/bikes" ? "current" : ""}>
+        <Link href="/bikes">Vehicles</Link>
       </li>
       <li className={`dropdown ${findLocation(blogs_link) ? "current" : ""}`}>
         <a href="#">Blog</a>

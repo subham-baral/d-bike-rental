@@ -34,7 +34,7 @@ const AboutInner = () => {
           }} className="about-one__left wow slideInLeft">
               <div className="about-one__img-box">
                 <div className="about-one__img">
-                  <img src="/20191119110838_S-Presso.jpg" alt="About main" />
+                  <img src="/detail-front-wheel-engine-parked-motorbike-sunset-copy-space.png" alt="About main" />
                 </div>
 
                 <div className="about-one__shape-2 float-bob-y">
@@ -54,7 +54,7 @@ const AboutInner = () => {
                 </div>
 
                 <div className="about-one__img-2">
-                  <img src="/Hyundai-Exter-1-web.jpg" alt="About secondary" />
+                  <img src="/all-veichle-banner-for-faq.png" alt="About secondary" />
                 </div>
 
                 <div className="about-one__experience">

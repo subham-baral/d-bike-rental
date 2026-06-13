@@ -4,7 +4,7 @@ const Banner = ({
   breadcrumb
 }) => {
   return <section className="page-header">
-            <div className="page-header__bg"></div>
+            <div className="page-header__bg" style={{backgroundImage: "url(/CAR-BANNER-2.webp)"}}></div>
             <div className="page-header__shape-1"></div>
             <div className="container">
                 <div className="page-header__inner">

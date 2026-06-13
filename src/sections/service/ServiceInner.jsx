@@ -42,7 +42,7 @@ const ServiceInner = ({
         }} viewport={{
           amount: 0.01,
           once: true
-        }} key={service.id} className={`col-xl-3 col-lg-6 col-md-6 wow`}>
+        }} key={service.id} className={`col-xl-3 col-lg-6 col-md-6 col-6 wow`}>
                             <div className="services-one__single">
                                 <div className="services-one__single-shape-1"></div>
                                 <div className="services-one__single-shape-2"></div>

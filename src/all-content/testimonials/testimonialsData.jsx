@@ -12,93 +12,93 @@ import t5 from "../../assets/images/testimonial/testimonial-2-5.jpg";
 import t6 from "../../assets/images/testimonial/testimonial-2-6.jpg";
 export const testimonialData = [{
   id: 1,
-  name: "Adam Smith",
+  name: "Amit Sharma",
   role: "Customer",
   image: testimonial1,
-  text: "maintaining oral health through practices such as the regular check-a ups, cleanings, and treatments for teeth and an gums.",
+  text: "Very hassle-free bike rental experience. The scooty was in excellent condition and they are located right near the Puri railway station. Highly recommended for exploring Puri.",
   rating: 5,
   link: "/inner/testimonials"
 }, {
   id: 2,
-  name: "Adam Milne",
-  role: "Customer",
+  name: "Sneha Patel",
+  role: "Tourist",
   image: testimonial2,
-  text: "maintaining oral health through practices such as the regular check-a ups, cleanings, and treatments for teeth and an gums.",
+  text: "One of the best two-wheeler rental agencies in Puri! The owner is very polite, the paperwork is quick, and the prices are very reasonable. Made our trip so much easier.",
   rating: 5,
   link: "/inner/testimonials"
 }, {
   id: 3,
-  name: "Marco Janson",
+  name: "Rahul Das",
   role: "Customer",
   image: testimonial3,
-  text: "maintaining oral health through practices such as the regular check-a ups, cleanings, and treatments for teeth and an gums.",
+  text: "Rented a bike for 3 days. The vehicle ran smoothly without any issues. D Bike Rental is genuinely reliable and their 4.7 rating is well deserved.",
   rating: 5,
   link: "/inner/testimonials"
 }, {
   id: 4,
-  name: "Look Ronci",
-  role: "Customer",
+  name: "John D'Souza",
+  role: "Tourist",
   image: testimonial4,
-  text: "maintaining oral health through practices such as the regular check-a ups, cleanings, and treatments for teeth and an gums.",
+  text: "Great service! Picked up a scooter right after getting off the train. It was clean and fully serviced. Dropping it off was just as easy. Five stars!",
   rating: 5,
   link: "/inner/testimonials"
 }, {
   id: 5,
-  name: "Harry Broke",
-  role: "Customer",
+  name: "Vikram Singh",
+  role: "Frequent Visitor",
   image: testimonial5,
-  text: "maintaining oral health through practices such as the regular check-a ups, cleanings, and treatments for teeth and an gums.",
+  text: "I've been using their services for years whenever I visit Puri. Always a pleasant experience with no hidden charges. Best bike rental in the city.",
   rating: 5,
   link: "/inner/testimonials"
 }, {
   id: 6,
-  name: "Jessica Brown",
+  name: "Priya Mohanty",
   role: "Customer",
   image: testimonial6,
-  text: "maintaining oral health through practices such as the regular check-a ups, cleanings, and treatments for teeth and an gums.",
+  text: "Very convenient location near Shakuntala Palace. The scooters are well maintained and give great mileage. Will definitely rent from them again.",
   rating: 5,
   link: "/inner/testimonials"
 }];
 export const testimonialsTwo = [{
   id: 1,
-  name: "Alisa Fox",
-  role: "Auto Dealer",
+  name: "Amit Sharma",
+  role: "Customer",
   image: t1,
   link: "/inner/testimonials",
-  text: "A logistic service provider company plays a pivotal role in the global supply chain. A logistic service provider company plays a pivotal role."
+  text: "Very hassle-free bike rental experience. The scooty was in excellent condition and they are located right near the Puri railway station. Highly recommended for exploring Puri."
 }, {
   id: 2,
-  name: "Creas Jordan",
-  role: "Customer",
+  name: "Sneha Patel",
+  role: "Tourist",
   image: t2,
   link: "/inner/testimonials",
-  text: "A logistic service provider company plays a pivotal role in the global supply chain. A logistic service provider company plays a pivotal role."
+  text: "One of the best two-wheeler rental agencies in Puri! The owner is very polite, the paperwork is quick, and the prices are very reasonable. Made our trip so much easier."
 }, {
   id: 3,
-  name: "Ass Lee",
-  role: "Senior Consultant",
+  name: "Rahul Das",
+  role: "Customer",
   image: t3,
   link: "/inner/testimonials",
-  text: "A logistic service provider company plays a pivotal role in the global supply chain. A logistic service provider company plays a pivotal role."
+  text: "Rented a bike for 3 days. The vehicle ran smoothly without any issues. D Bike Rental is genuinely reliable and their 4.7 rating is well deserved."
 }, {
   id: 4,
-  name: "Creas Wokes",
-  role: "Managing Director",
+  name: "John D'Souza",
+  role: "Tourist",
   image: t4,
   link: "/inner/testimonials",
-  text: "A logistic service provider company plays a pivotal role in the global supply chain. A logistic service provider company plays a pivotal role."
+  text: "Great service! Picked up a scooter right after getting off the train. It was clean and fully serviced. Dropping it off was just as easy. Five stars!"
 }, {
   id: 5,
-  name: "Alex Jordan",
-  role: "Customer",
+  name: "Vikram Singh",
+  role: "Frequent Visitor",
   image: t5,
   link: "/inner/testimonials",
-  text: "A logistic service provider company plays a pivotal role in the global supply chain. A logistic service provider company plays a pivotal role."
+  text: "I've been using their services for years whenever I visit Puri. Always a pleasant experience with no hidden charges. Best bike rental in the city."
 }, {
   id: 6,
-  name: "Janaton Trot",
-  role: "Auto Dealer",
+  name: "Priya Mohanty",
+  role: "Customer",
   image: t6,
   link: "/inner/testimonials",
-  text: "A logistic service provider company plays a pivotal role in the global supply chain. A logistic service provider company plays a pivotal role."
+  text: "Very convenient location near Shakuntala Palace. The scooters are well maintained and give great mileage. Will definitely rent from them again."
 }];

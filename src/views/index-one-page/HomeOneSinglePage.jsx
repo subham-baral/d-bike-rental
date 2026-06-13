@@ -16,7 +16,6 @@ import FaqOne from '../../sections/home-one/FaqOne';
 import LetsTalk from '../../sections/common/LetsTalk';
 import TeamOne from '../../sections/home-one/TeamOne';
 import DownloadApp from '../../sections/common/DownloadApp';
-import BrandOne from '../../sections/home-one/BrandOne';
 import BlogOne from '../../sections/blog/BlogOne';
 import Gallery from '../../sections/common/Gallery';
 import Footer from '../../sections/common/Footer';
@@ -61,7 +60,6 @@ const HomeOneSinglePage = () => {
             <LetsTalk />
             <TeamOne />
             <DownloadApp />
-            <BrandOne />
             <BlogOne />
             <Gallery />
             <Footer />

@@ -1,24 +1,20 @@
 import React from 'react';
 import Banner from '../../sections/common/Banner';
-import AboutInner from '../../sections/about/AboutInner';
-import TeamInner from '../../sections/about/TeamInner';
-import TestimonianInner from '../../sections/about/TestimonianInner';
-import LetsTalk from '../../sections/common/LetsTalk';
-import BlogOne from '../../sections/blog/BlogOne';
+import AboutOne from '../../sections/home-one/AboutOne';
+import TestimonialOne from '../../sections/home-one/TestimonialOne';
 import ServiceInner from '../../sections/service/ServiceInner';
 import BookingInner from '../../sections/booking/BookingInner';
-import ListingInner from '../../sections/about/ListingInner';
+import ListingOne from '../../sections/home-one/ListingOne';
+import RideExperience from '../../sections/about/RideExperience';
 const About = () => {
   return <>
             <Banner breadcrumb='About Us' />
-            <AboutInner />
+            <AboutOne sectionClass='about-page' />
             <ServiceInner sectionClass='services-one' />
             <BookingInner />
-            <ListingInner />
-            <TeamInner />
-            <TestimonianInner />
-            <LetsTalk />
-            <BlogOne />
+            <ListingOne />
+            <TestimonialOne />
+            <RideExperience />
         </>;
 };
 export default About;

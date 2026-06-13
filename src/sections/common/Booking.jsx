@@ -50,7 +50,7 @@ const Booking = () => {
                 amount: 0.01,
                 once: true
               }}>
-                                    <img src={bookingImg} alt="booking" />
+                                    <img src={bookingImg.src} alt="booking" />
                                 </motion.div>
 
                                 <motion.div initial={{
@@ -66,7 +66,7 @@ const Booking = () => {
                 amount: 0.01,
                 once: true
               }} className="booking-one__shape-1 ">
-                                    <img src={bookingShape} alt="shape" />
+                                    <img src={bookingShape.src} alt="shape" />
                                 </motion.div>
                             </div>
                         </div>

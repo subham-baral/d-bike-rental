@@ -9,7 +9,7 @@ const ContactMain = () => {
       name: form.elements.namedItem('name').value,
       email: form.elements.namedItem('email').value,
       number: form.elements.namedItem('number').value,
-      company: form.elements.namedItem('company').value,
+      subject: form.elements.namedItem('subject').value,
       message: form.elements.namedItem('message').value
     };
     console.log('Contact Data:', contactData);
@@ -37,7 +37,7 @@ const ContactMain = () => {
                                     <span className="icon-call"></span>
                                 </div>
                                 <p>Contact Us</p>
-                                <h3><a href="tel:558270575405">+55 827 057 5405</a></h3>
+                                <h3><a href="tel:+918112003520">+91 81120 03520</a></h3>
                             </div>
                         </div>
                         {/*Contact Two Single End*/}
@@ -48,7 +48,7 @@ const ContactMain = () => {
                                     <span className="icon-email"></span>
                                 </div>
                                 <p>Mail Us</p>
-                                <h3><a href="mailto:example@gamil.com">example@gamil.com</a></h3>
+                                <h3><a href="mailto:dbikerental@gmail.com">dbikerental@gmail.com</a></h3>
                             </div>
                         </div>
                         {/*Contact Two Single End*/}
@@ -59,7 +59,7 @@ const ContactMain = () => {
                                     <span className="icon-location"></span>
                                 </div>
                                 <p>Our Office Location</p>
-                                <h3>12 Green Road 05 New Yark</h3>
+                                <h3>Gopal Ballabh Rd, near Shakuntala Palace, Puri</h3>
                             </div>
                         </div>
                         {/*Contact Two Single End*/}
@@ -75,7 +75,7 @@ const ContactMain = () => {
                         <div className="row">
                             <div className="col-xl-6">
                                 <div className="contact-page__left">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.753041141002!2d-118.80123790098536!3d34.152323469614075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e82469c2162619%3A0xba03efb7998eef6d!2sCostco+Wholesale!5e0!3m2!1sbn!2sbd!4v1562518641290!5m2!1sbn!2sbd" className="google-map__one"></iframe>
+                                    <iframe src="https://maps.google.com/maps?q=Gopal%20Ballabh%20Rd,%20near%20Shakuntala%20Palace,%20Puri,%20Odisha%20752001&t=&z=15&ie=UTF8&iwloc=&output=embed" className="google-map__one"></iframe>
                                 </div>
                             </div>
                             <div className="col-xl-6">
@@ -100,7 +100,7 @@ const ContactMain = () => {
                                             </div>
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="contact-page__input-box">
-                                                    <input type="text" placeholder="Company" name="company" />
+                                                    <input type="text" placeholder="Subject" name="subject" />
                                                 </div>
                                             </div>
                                             <div className="col-xl-12">

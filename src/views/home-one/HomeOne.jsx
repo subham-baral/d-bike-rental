@@ -7,7 +7,6 @@ import AboutOne from '../../sections/home-one/AboutOne';
 import ProcessOne from '../../sections/home-one/ProcessOne';
 import TestimonialOne from '../../sections/home-one/TestimonialOne';
 import FaqOne from '../../sections/home-one/FaqOne';
-import BrandOne from '../../sections/home-one/BrandOne';
 import Footer from '../../sections/common/Footer';
 import StrickyHeader from '../../sections/common/StrickyHeader';
 import LetsTalk from '../../sections/common/LetsTalk';
@@ -25,7 +24,6 @@ const HomeOne = () => {
             <TestimonialOne />
             <FaqOne />
             <LetsTalk />
-            <BrandOne />
             <BlogOne />
             <Footer />
             <StrickyHeader />

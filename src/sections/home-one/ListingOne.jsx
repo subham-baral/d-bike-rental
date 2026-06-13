@@ -137,7 +137,7 @@ const ListingOne = () => {
                                                             </div>
                                                             <div className="listing-one__btn-box">
                                                                 <Link href={item?.link || "/listing-single"} className="thm-btn">
-                                                                    Details Now
+                                                                    View Details
                                                                     <span className="fas fa-arrow-right"></span>
                                                                 </Link>
                                                             </div>

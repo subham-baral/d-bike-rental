@@ -4,12 +4,11 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname as useLocation } from 'next/navigation';
 import { motion } from "framer-motion";
-import { blogs_link, cars_link } from '../link-content/NavLink';
+import { blogs_link } from '../link-content/NavLink';
 import useGorentContext from '../context/useGorentContext';
 
 const MobileManuList = () => {
   const { setIsMobileManu } = useGorentContext();
-  const [isCars, setIsCars] = useState(false);
   const [isBlog, setIsBlog] = useState(false);
   
   const currentPath = useLocation() || "";
@@ -20,7 +19,6 @@ const MobileManuList = () => {
   
   const closeMobileManu = () => {
     setIsMobileManu(false);
-    setIsCars(false);
     setIsBlog(false);
   };
   
@@ -32,20 +30,8 @@ const MobileManuList = () => {
       <li className={currentPath === "/about" ? "current" : ""} onClick={closeMobileManu}>
         <Link href="/about">About Us</Link>
       </li>
-      <li className="dropdown">
-        <a href="#" className={`${isCars || findLocation(cars_link) ? "expanded" : ""}`}>
-          Vehicles
-          <button className={`${isCars ? "expanded" : ""}`} onClick={(e) => { e.preventDefault(); setIsCars(pre => !pre); }}>
-            <i className="fa fa-angle-down"></i>
-          </button>
-        </a>
-        <ul className="shadow-box" style={{ display: `${isCars ? "block" : "none"}` }}>
-          {cars_link.map(Item => (
-            <motion.li onClick={closeMobileManu} initial={{ x: -70, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.1 * Item?.id, ease: "easeOut" }} viewport={{ amount: 0.01, once: true }} key={Item?.id} className={`${currentPath === Item?.link ? "current" : ""}`}>
-              <Link href={Item?.link}>{Item?.value}</Link>
-            </motion.li>
-          ))}
-        </ul>
+      <li className={currentPath === "/bikes" ? "current" : ""} onClick={closeMobileManu}>
+        <Link href="/bikes">Vehicles</Link>
       </li>
       <li className="dropdown">
         <a href="#" className={`${isBlog || findLocation(blogs_link) ? "expanded" : ""}`}>

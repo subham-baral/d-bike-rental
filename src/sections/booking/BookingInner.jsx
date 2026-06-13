@@ -6,7 +6,7 @@ import bookingImg from "../../assets/images/resources/booking-one-img-1.png";
 import bookingShape from "../../assets/images/shapes/booking-one-shape-1.png";
 import CustomSelect from "../../components/elements/CustomSelect";
 const BookingInner = () => {
-  const [carType, setCarType] = useState("");
+  const [bikeType, setBikeType] = useState("");
   const [dropoffLocation, setDropoffLocation] = useState("");
   const [pickupLocation, setPickupLocation] = useState("");
   const handleSubmit = e => {
@@ -16,19 +16,19 @@ const BookingInner = () => {
     const bookingData = {
       pickupLocation,
       dropoffLocation,
-      carType,
+      bikeType,
       date
     };
 
     // basic validation
-    if (!pickupLocation || !dropoffLocation || !carType || !date) {
+    if (!pickupLocation || !dropoffLocation || !bikeType || !date) {
       if (bookingData) return;
     }
 
     // reset
     setPickupLocation('');
     setDropoffLocation('');
-    setCarType('');
+    setBikeType('');
     form.reset();
   };
   return <section className="booking-one">
@@ -52,7 +52,7 @@ const BookingInner = () => {
                 amount: 0.01,
                 once: true
               }}>
-                                    <img src={bookingImg} alt="booking" />
+                                    <img src="/booking-bike.png" alt="booking" />
                                 </motion.div>
 
                                 <motion.div initial={{
@@ -68,7 +68,7 @@ const BookingInner = () => {
                 amount: 0.01,
                 once: true
               }} className="booking-one__shape-1 ">
-                                    <img src={bookingShape} alt="shape" />
+                                    <img src={bookingShape.src} alt="shape" />
                                 </motion.div>
                             </div>
                         </div>
@@ -87,18 +87,19 @@ const BookingInner = () => {
               amount: 0.01,
               once: true
             }} className="booking-one__right wow slideInRight">
-                                <div className="booking-one__content">
+                                <div className="booking-one__content" style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.2)', padding: '0', overflow: 'hidden', backgroundColor: '#fff', borderRadius: '10px' }}>
                                     {/* Title */}
-                                    <div className="booking-one__title-box">
+                                    <div className="booking-one__title-box" style={{ padding: '25px 0', margin: '0' }}>
                                         <div className="booking-one__title-shape" />
-                                        <h3 className="booking-one__title">Book a car</h3>
+                                        <h3 className="booking-one__title" style={{ fontSize: '24px' }}>Book a bike</h3>
                                     </div>
 
-                                    {/* Form */}
-                                    <form className="booking-one__form" onSubmit={handleSubmit}>
+                                    <div style={{ padding: '20px 30px 30px' }}>
+                                        {/* Form */}
+                                        <form className="booking-one__form" onSubmit={handleSubmit}>
                                         <div className="row">
                                             {/* Pickup */}
-                                            <div className="col-xl-6 col-lg-6 col-md-6">
+                                            <div className="col-xl-6 col-lg-6 col-md-6 col-6">
                                                 <div className="booking-one__input-box">
                                                     <p className="booking-one__input-title">
                                                         <span className="icon-pin-2"></span> Pickup
@@ -128,7 +129,7 @@ const BookingInner = () => {
                                             </div>
 
                                             {/* Dropoff */}
-                                            <div className="col-xl-6 col-lg-6 col-md-6">
+                                            <div className="col-xl-6 col-lg-6 col-md-6 col-6">
                                                 <div className="booking-one__input-box">
                                                     <p className="booking-one__input-title">
                                                         <span className="icon-pin-2"></span> Drop off
@@ -158,32 +159,32 @@ const BookingInner = () => {
                                                 </div>
                                             </div>
 
-                                            {/* Car Type */}
-                                            <div className="col-xl-6 col-lg-6 col-md-6">
+                                            {/* Bike Type */}
+                                            <div className="col-xl-6 col-lg-6 col-md-6 col-6">
                                                 <div className="booking-one__input-box">
                                                     <p className="booking-one__input-title">
-                                                        <img src="/icon/motorcross.png" alt="icon" style={{ width: "30px", marginRight: "10px" }} /> Your car type
+                                                        <img src="/icon/motorcross.png" alt="icon" style={{ width: "30px", marginRight: "10px" }} /> Your bike type
                                                     </p>
                                                     <div className="select-box">
                                                         <CustomSelect optionArray={[{
-                            value: "Sedan",
-                            label: "Sedan"
+                            value: "Scooter",
+                            label: "Scooter"
                           }, {
-                            value: "SUV",
-                            label: "SUV"
+                            value: "Cruiser",
+                            label: "Cruiser"
                           }, {
-                            value: "Microbus",
-                            label: "Microbus"
+                            value: "Sports",
+                            label: "Sports"
                           }, {
-                            value: "Luxury",
-                            label: "Luxury"
-                          }]} value={carType} onChange={value => setCarType(value)} />
+                            value: "Standard",
+                            label: "Standard"
+                          }]} value={bikeType} onChange={value => setBikeType(value)} />
                                                     </div>
                                                 </div>
                                             </div>
 
                                             {/* Date */}
-                                            <div className="col-xl-6 col-lg-6 col-md-6">
+                                            <div className="col-xl-6 col-lg-6 col-md-6 col-6">
                                                 <div className="booking-one__input-box">
                                                     <p className="booking-one__input-title">
                                                         <span className="icon-date"></span> Date
@@ -202,9 +203,10 @@ const BookingInner = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                        </form>
 
-                                    <div className="result"></div>
+                                        <div className="result"></div>
+                                    </div>
                                 </div>
                             </motion.div>
                         </div>
