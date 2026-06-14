@@ -50,50 +50,25 @@ const BannerOne = () => {
                 backgroundImage: `url(/bikes/close-up-photo-high-power-motorcycle-part.png)`
             }} />
 
-            <div className="main-slider__carousel owl-carousel owl-theme">
-                <Swiper
-                    modules={[Navigation, Autoplay]}
-                    spaceBetween={0}
-                    slidesPerView={1}
-                    autoplay={{
-                        delay: 6000,
-                        disableOnInteraction: false
-                    }}
-                    loop={true}
-                    speed={1000}
-                    onSlideChange={swiper => setActiveIndex(swiper.realIndex)}
-                    onSwiper={setSwiperInstance}
-                >
-                    {sliderData.map((item, index) => (
-                        <SwiperSlide key={item.id}>
-                            <div className={`item ${index === activeIndex ? "active" : ""}`}>
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col-xl-12 col-lg-12">
-                                            <div className="main-slider__content text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                                <div className="main-slider__sub-title-box">
-                                                    <p className="main-slider__sub-title">Welcome to</p>
-                                                </div>
-                                                <h2 className="main-slider__title">
-                                                    D Bike <span>{item.titleHighlight}</span>
-                                                </h2>
-                                                <p className="main-slider__sub-title-two">Experience</p>
-
-                                            </div>
-                                        </div>
+            <div className="main-slider__carousel">
+                <div className="item active">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-xl-12 col-lg-12">
+                                <div className="main-slider__content text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                    <div className="main-slider__sub-title-box">
+                                        <p className="main-slider__sub-title">Welcome to</p>
                                     </div>
+                                    <h2 className="main-slider__title">
+                                        D Bike <span>Rental</span>
+                                    </h2>
+                                    <p className="main-slider__sub-title-two" style={{ maxWidth: '600px', fontSize: '18px', marginTop: '20px', lineHeight: '1.6', color: 'rgb(255, 255, 255)' }}>
+                                        Explore the city with freedom and ease. We offer a premium fleet of well-maintained motorcycles and scooters for an unforgettable riding experience.
+                                    </p>
                                 </div>
                             </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-                <div className="owl-nav">
-                    <button onClick={() => swiperInstance?.slidePrev()} type="button" role="presentation" className="owl-prev">
-                        <span className="icon-right-arrow-1"></span>
-                    </button>
-                    <button onClick={() => swiperInstance?.slideNext()} type="button" role="presentation" className="owl-next">
-                        <span className="icon-right-arrow-1"></span>
-                    </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -23971,3 +23971,7 @@ Product Description
         white-space: normal;
     }
 }
+
+p.main-slider__sub-title-two {
+    font-size: 18px !important;
+}
