@@ -16,7 +16,8 @@ export async function GET() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.CMS_API_TOKEN}`
+                'Authorization': `Bearer ${process.env.CMS_API_TOKEN}`,
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
             },
             body: JSON.stringify(requestBody),
             cache: 'no-store' // Ensure we get fresh data
@@ -34,9 +35,11 @@ export async function GET() {
 
         return NextResponse.json({ success: true, data: data.data.data }); // Nested data array
     } catch (error) {
-        console.error('Error fetching vehicles:', error);
+        console.error('Error fetching vehicles URL:', `${process.env.CMS_API_URL}/delivery/contents`);
+        console.error('Token exists?:', !!process.env.CMS_API_TOKEN);
+        console.error('Error details:', error);
         return NextResponse.json(
-            { success: false, error: 'Failed to fetch vehicles data' },
+            { success: false, error: error.message || 'Failed to fetch vehicles data' },
             { status: 500 }
         );
     }

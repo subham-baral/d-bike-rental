@@ -9962,11 +9962,11 @@ Error Page
 }
 
 .listing-one__meta-box-info {
-  position: relative;
-  display: block;
-  border-top: 1px solid rgba(var(--gorent-black-rgb), .10);
-  padding-top: 13px;
-  margin-top: 18px;
+    border-top: 1px solid rgba(var(--gorent-black-rgb), .1);
+    margin-top: 10px;
+    padding-top: 13px;
+    display: block;
+    position: relative;
 }
 
 .listing-one__meta {
@@ -9992,16 +9992,16 @@ Error Page
 }
 
 .listing-one__car-rent-box {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(var(--gorent-extra-rgb), .40);
-  padding: 10px 0;
-  margin-top: 23px;
-  margin-bottom: 30px;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+    background-color: rgba(var(--gorent-extra-rgb), .4);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    display: flex;
+    position: relative;
 }
 
 .listing-one__car-rent {
@@ -11039,10 +11039,10 @@ Error Page
 # Listing Single
 --------------------------------------------------------------*/
 .listing-single {
-  position: relative;
-  display: block;
-  padding: 111px 0 120px;
   z-index: 1;
+  padding: 50px 0 120px;
+  display: block;
+  position: relative;
 }
 
 .listing-single__top {
@@ -11432,15 +11432,15 @@ Error Page
 }
 
 .listing-single__img-holder {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  transition: all 500ms ease;
-  border-radius: 10px;
-  width: 161px;
-  height: 161px;
-  cursor: pointer;
-  z-index: 1;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 10px;
+    width: 161px;
+    height: 104px;
+    transition: all .5s;
+    display: block;
+    position: relative;
+    overflow: hidden;
 }
 
 .listing-single__img-holder:before {
@@ -11615,9 +11615,9 @@ Error Page
 }
 
 .listing-single__car-overview-point-right {
-  position: relative;
-  display: block;
-  margin-left: 100px;
+    margin-left: 50px;
+    display: block;
+    position: relative;
 }
 
 .listing-single__car-overview-point-right p {

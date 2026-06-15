@@ -13,10 +13,27 @@ const ListingOne = () => {
     useEffect(() => {
         const fetchVehicles = async () => {
             try {
-                const res = await fetch('/api/vehicles');
+                const url = `${process.env.NEXT_PUBLIC_CMS_API_URL}/delivery/contents`;
+                const requestBody = {
+                    content_type_id: "vehicle",
+                    status: "published",
+                    sort_by: "created_at",
+                    sort_order: "desc",
+                    per_page: 50
+                };
+                
+                const res = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_CMS_API_TOKEN}`
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+                
                 const result = await res.json();
                 if (result.success && result.data) {
-                    setVehicles(result.data);
+                    setVehicles(result.data.data); // data is nested inside result.data
                 }
             } catch (error) {
                 console.error("Failed to fetch vehicles:", error);
@@ -77,7 +94,7 @@ const ListingOne = () => {
                                                                     <img src={imageUrl} alt={item.data?.title || item.title} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
                                                                 </div>
                                                                 <div className="listing-one__content">
-                                                                    <h3 className="listing-one__title"><Link href={`/listing-single`}>{item.data?.title || item.title}</Link></h3>
+                                                                    <h3 className="listing-one__title"><Link href={`/vehicles/${item.data?.slug || item.slug}`}>{item.data?.title || item.title}</Link></h3>
                                                                     <div className="listing-one__meta-box-info">
                                                                         <ul className="list-unstyled listing-one__meta">
                                                                             <li>
@@ -113,7 +130,7 @@ const ListingOne = () => {
                                                                             <p className="listing-one__car-rent">Starting From <span>₹{item.data?.price_per_day || 499}/</span> Day</p>
                                                                         </div>
                                                                         <div className="listing-one__btn-box">
-                                                                            <Link href={`/listing-single`} className="thm-btn">
+                                                                            <Link href={`/vehicles/${item.data?.slug || item.slug}`} className="thm-btn">
                                                                                 View Details <span className="fas fa-arrow-right"></span>
                                                                             </Link>
                                                                         </div>

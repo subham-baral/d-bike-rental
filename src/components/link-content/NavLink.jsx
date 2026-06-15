@@ -1,12 +1,12 @@
 export const cars_link = [
   {
     id: 1,
-    link: "/bikes",
+    link: "/vehicles",
     value: "Vehicle Listing"
   },
   {
     id: 2,
-    link: "/bikes/details",
+    link: "/vehicles/details",
     value: "Vehicle Details"
   }
 ];

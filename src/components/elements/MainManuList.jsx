@@ -26,8 +26,8 @@ const MainManuList = ({ onePageManuList }) => {
       <li className={currentPath === "/about" ? "current" : ""}>
         <Link href="/about">About Us</Link>
       </li>
-      <li className={currentPath === "/bikes" ? "current" : ""}>
-        <Link href="/bikes">Vehicles</Link>
+      <li className={currentPath === "/vehicles" ? "current" : ""}>
+        <Link href="/vehicles">Vehicles</Link>
       </li>
       <li className={`dropdown ${findLocation(blogs_link) ? "current" : ""}`}>
         <a href="#">Blog</a>

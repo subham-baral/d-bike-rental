@@ -44,7 +44,7 @@ const RideExperience = () => {
             it close to the station, and make the city yours for the day.
           </p>
           <div className="ride-experience__actions">
-            <Link href="/bikes" className="ride-experience__primary">
+            <Link href="/vehicles" className="ride-experience__primary">
               Explore Our Bikes
               <span className="fas fa-arrow-right"></span>
             </Link>

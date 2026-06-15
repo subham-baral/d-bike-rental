@@ -30,8 +30,8 @@ const MobileManuList = () => {
       <li className={currentPath === "/about" ? "current" : ""} onClick={closeMobileManu}>
         <Link href="/about">About Us</Link>
       </li>
-      <li className={currentPath === "/bikes" ? "current" : ""} onClick={closeMobileManu}>
-        <Link href="/bikes">Vehicles</Link>
+      <li className={currentPath === "/vehicles" ? "current" : ""} onClick={closeMobileManu}>
+        <Link href="/vehicles">Vehicles</Link>
       </li>
       <li className="dropdown">
         <a href="#" className={`${isBlog || findLocation(blogs_link) ? "expanded" : ""}`}>

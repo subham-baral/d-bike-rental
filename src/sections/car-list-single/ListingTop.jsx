@@ -1,64 +1,79 @@
 import React from 'react';
-const ListingTop = () => {
-  return <div className="listing-single__top">
-            <div className="listing-single__top-left">
-                <h3 className="listing-single__title">Acura Sport Version</h3>
-                <p className="listing-single__sub-title">4.0 D5 PowerPulse Momentum 5dr AWD Geartronic Estate</p>
-                <div className="listing-single__car-details-box">
-                    <ul className="list-unstyled listing-single__car-details">
-                        <li>
-                            <span className="icon-date"></span>
-                            <p>2025</p>
-                        </li>
-                        <li>
-                            <span className="icon-mileage"></span>
-                            <p>80 Miles</p>
-                        </li>
-                        <li>
-                            <span className="fas fa-motorcycle"></span>
-                            <p>Automatic</p>
-                        </li>
-                        <li>
-                            <span className="icon-fuel-type"></span>
-                            <p>Petrol</p>
-                        </li>
-                    </ul>
-                    <ul className="list-unstyled listing-single__car-details">
-                        <li>
-                            <span className="icon-seat"></span>
-                            <p>7 seats</p>
-                        </li>
-                        <li>
-                            <span className="icon-door"></span>
-                            <p>4 Doors</p>
-                        </li>
-                        <li>
-                            <span className="icon-fuel-type"></span>
-                            <p>2.5L</p>
-                        </li>
-                        <li>
-                            <span className="fas fa-shield-alt"></span>
-                            <p>3 Large bags</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div className="listing-single__top-right">
-                <div className="listing-single__tag">
-                    <a href="#">Share <span className="icon-arrow-up-from"></span> </a>
-                    <a href="#">Save <span className="icon-bookmark"></span> </a>
-                    <a href="#">Compare <span className="icon-compress"></span> </a>
-                </div>
-                <h2 className="listing-single__price">$150,000</h2>
-                <div className="listing-single__offer-price">
-                    <div className="icon">
-                        <span className="icon-tag-2"></span>
-                    </div>
-                    <div className="text">
-                        <p>Make An Offer Price</p>
-                    </div>
-                </div>
-            </div>
-        </div>;
+
+const ListingTop = ({ vehicle }) => {
+  if (!vehicle || !vehicle.data) return null;
+
+  const { title, short_description, price_per_day, mileage, helmet_included, air_conditioning, gps } = vehicle.data;
+
+  // Find some taxonomies if needed
+  const getTaxonomyTerm = (slug) => {
+    const tax = vehicle.taxonomy_terms_resolved?.find(t => t.taxonomy_slug === slug);
+    return tax ? tax.name : 'N/A';
+  };
+
+  const fuelType = getTaxonomyTerm('fuel-type');
+  const vehicleType = getTaxonomyTerm('vehicle-type');
+  const brand = getTaxonomyTerm('brand');
+
+  return (
+    <div className="listing-single__top">
+      <div className="listing-single__top-left">
+        <h3 className="listing-single__title">{title}</h3>
+        <p className="listing-single__sub-title">{short_description || brand}</p>
+        <div className="listing-single__car-details-box">
+          <ul className="list-unstyled listing-single__car-details">
+            <li>
+              <span className="icon-date"></span>
+              <p>{vehicle.data.model || 'Current Model'}</p>
+            </li>
+            <li>
+              <span className="icon-mileage"></span>
+              <p>{mileage ? `${mileage} Mileage` : 'Unlimited Mileage'}</p>
+            </li>
+            <li>
+              <span className="fas fa-motorcycle"></span>
+              <p>{vehicleType !== 'N/A' ? vehicleType : 'Standard'}</p>
+            </li>
+            <li>
+              <span className="icon-fuel-type"></span>
+              <p>{fuelType !== 'N/A' ? fuelType : 'Petrol'}</p>
+            </li>
+          </ul>
+          <ul className="list-unstyled listing-single__car-details">
+            {helmet_included && (
+              <li>
+                <span className="fas fa-hard-hat"></span>
+                <p>Helmet Included</p>
+              </li>
+            )}
+            {air_conditioning && (
+              <li>
+                <span className="icon-air-conditioning"></span>
+                <p>Air Conditioning</p>
+              </li>
+            )}
+            {gps && (
+              <li>
+                <span className="icon-gps"></span>
+                <p>GPS</p>
+              </li>
+            )}
+          </ul>
+        </div>
+      </div>
+      <div className="listing-single__top-right">
+        <h2 className="listing-single__price">₹{price_per_day || 499} <span>/day</span></h2>
+        <div className="listing-single__offer-price">
+          <div className="icon">
+            <span className="icon-tag-2"></span>
+          </div>
+          <div className="text">
+            <p>Best Price Guarantee</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
+
 export default ListingTop;

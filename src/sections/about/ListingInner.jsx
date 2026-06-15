@@ -13,10 +13,27 @@ const ListingInner = () => {
     useEffect(() => {
         const fetchVehicles = async () => {
             try {
-                const res = await fetch('/api/vehicles');
+                const url = `${process.env.NEXT_PUBLIC_CMS_API_URL}/delivery/contents`;
+                const requestBody = {
+                    content_type_id: "vehicle",
+                    status: "published",
+                    sort_by: "created_at",
+                    sort_order: "desc",
+                    per_page: 50
+                };
+                
+                const res = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_CMS_API_TOKEN}`
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+                
                 const result = await res.json();
                 if (result.success && result.data) {
-                    setVehicles(result.data);
+                    setVehicles(result.data.data); // data is nested inside result.data
                 }
             } catch (error) {
                 console.error("Failed to fetch vehicles:", error);

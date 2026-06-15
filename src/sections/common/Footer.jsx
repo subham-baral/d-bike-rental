@@ -14,7 +14,7 @@ const linkOne = [{
   title: "About Us"
 }, {
   id: 3,
-  link: "/bikes",
+  link: "/vehicles",
   title: "Vehicles"
 }, {
   id: 4,
