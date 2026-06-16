@@ -13373,6 +13373,12 @@ Error Page
   z-index: 1;
 }
 
+@media only screen and (max-width: 767px) {
+    .services-one {
+        padding: 0px 0 0 !important;
+    }
+}
+
 .services-one__shape-1 {
   position: absolute;
   width: 481px;
@@ -23243,7 +23249,7 @@ Product Description
     z-index: 1;
     display: block;
     position: relative;
-    padding: 60px 0 !important;
+    padding: 60px 0;
 }
 .about-one { z-index: 1; padding: 60px 0 0 !important; display: block; position: relative; }
 .process-one { counter-reset: count; z-index: 1; padding: 60px 0 0 !important; display: block; position: relative; }
@@ -23474,7 +23480,7 @@ Product Description
     /* Reduce huge gap below text */
     .main-slider .item {
         padding-top: 50px !important;
-        padding-bottom: 20px !important;
+        padding-bottom: 0px !important;
     }
     
     .banner-booking-container {
@@ -23482,6 +23488,7 @@ Product Description
         padding: 0px 15px 40px !important;
         pointer-events: auto;
         display: block;
+        margin-top: -20px;
     }
     .booking-one__title {
         font-size: 16px !important;

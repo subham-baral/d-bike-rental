@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { motion } from "framer-motion";
+import { useRouter } from 'next/navigation';
 import CustomSelect from "../../components/elements/CustomSelect";
 
 const sliderData = [{
@@ -22,25 +23,58 @@ const BannerOne = () => {
     const [swiperInstance, setSwiperInstance] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const [pickupLocation, setPickupLocation] = useState('');
-    const [dropoffLocation, setDropoffLocation] = useState('');
-    const [carType, setCarType] = useState('');
-    const [date, setDate] = useState('');
+    const router = useRouter();
 
-    const validate = () => {
-        const newErrors = {};
-        if (!pickupLocation || pickupLocation === 'Enter a Location') newErrors.pickup = 'Pickup location required';
-        if (!dropoffLocation || dropoffLocation === 'Enter a Location') newErrors.dropoff = 'Dropoff location required';
-        if (!carType) newErrors.carType = 'Car type required';
-        if (!date) newErrors.date = 'Date required';
-        return Object.keys(newErrors).length === 0;
+    const [taxonomies, setTaxonomies] = useState([]);
+    
+    // Selected IDs
+    const [pickupLocation, setPickupLocation] = useState('');
+    const [vehicleType, setVehicleType] = useState('');
+    const [fuelType, setFuelType] = useState('');
+    const [brand, setBrand] = useState('');
+
+    useEffect(() => {
+        const fetchTaxonomies = async () => {
+            try {
+                const res = await fetch('https://cmsapi.one9ty.com/api/v1/delivery/taxonomies?content_type=vehicle', {
+                    headers: {
+                        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_CMS_API_TOKEN}`,
+                        'Accept': 'application/json'
+                    }
+                });
+                const json = await res.json();
+                if (json.success && json.data) {
+                    setTaxonomies(json.data);
+                }
+            } catch (err) {
+                console.error("Error fetching taxonomies:", err);
+            }
+        };
+        fetchTaxonomies();
+    }, []);
+
+    const getTaxonomyOptions = (slug) => {
+        const tax = taxonomies.find(t => t.slug === slug);
+        if (!tax || !tax.terms) return [{ value: "", label: "Loading..." }];
+        
+        const defaultOption = { value: "", label: "Select..." };
+        const termOptions = tax.terms.map(t => ({ value: String(t.id), label: t.name }));
+        return [defaultOption, ...termOptions];
     };
 
-    const handleSubmit = async e => {
+    const handleSubmit = e => {
         e.preventDefault();
-        if (!validate()) return;
-        const bookingData = { pickupLocation, dropoffLocation, carType, date };
-        if (bookingData) return;
+        
+        const params = new URLSearchParams();
+        if (pickupLocation) params.append('pickup-location', pickupLocation);
+        if (vehicleType) params.append('rental-category', vehicleType);
+        if (fuelType) params.append('fuel-type', fuelType);
+        if (brand) params.append('brand', brand);
+
+        const queryString = params.toString();
+        const targetUrl = `/vehicles${queryString ? `?${queryString}` : ''}`;
+        
+        router.push(targetUrl);
     };
 
     return (
@@ -77,8 +111,8 @@ const BannerOne = () => {
                 <div className="row w-100 mx-0 justify-content-center">
                     <div className="col-xl-10 col-lg-12 col-md-12" style={{ pointerEvents: 'auto', marginTop: '20px', marginBottom: '30px' }}>
                         <motion.div initial={{ y: 80, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, ease: "easeOut" }} viewport={{ amount: 0.01, once: true }} className="booking-one__right wow fadeInUp">
-                            <div className="booking-one__content" style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.2)', padding: '0', overflow: 'hidden' }}>
-                                <div className="booking-one__title-box" style={{ padding: '25px 0' }}>
+                            <div className="booking-one__content" style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.2)', padding: '0', overflow: 'visible', borderRadius: '10px', backgroundColor: '#fff' }}>
+                                <div className="booking-one__title-box" style={{ padding: '25px 0', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>
                                     <div className="booking-one__title-shape" />
                                     <h3 className="booking-one__title" style={{ fontSize: '20px' }}>Book your ride with D Bike Rental</h3>
                                 </div>
@@ -86,41 +120,43 @@ const BannerOne = () => {
 
                                 <form className="booking-one__form" onSubmit={handleSubmit}>
                                     <div className="row">
-                                        <div className="col-xl-2 col-lg-2 col-md-4 col-6">
+                                        <div className="col-xl col-lg-4 col-md-6 col-6">
                                             <div className="booking-one__input-box" style={{ marginBottom: '15px' }}>
-                                                <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="icon-pin-2" style={{ marginRight: "5px" }}></span> Pickup</p>
+                                                <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="fas fa-map-marker-alt" style={{ marginRight: "5px", color: 'var(--gorent-secondary, #EE4325)' }}></span> Pickup</p>
                                                 <div className="select-box">
-                                                    <CustomSelect optionArray={[{ value: "Enter a Location", label: "Enter a Location" }, { value: "Puri Station", label: "Puri Station" }]} value={pickupLocation} onChange={value => setPickupLocation(value)} /> 
+                                                    <CustomSelect optionArray={getTaxonomyOptions('pickup-location')} value={pickupLocation} onChange={value => setPickupLocation(value)} /> 
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-xl-2 col-lg-2 col-md-4 col-6">
+                                        <div className="col-xl col-lg-4 col-md-6 col-6">
                                             <div className="booking-one__input-box" style={{ marginBottom: '15px' }}>
-                                                <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="icon-pin-2" style={{ marginRight: "5px" }}></span> Drop off</p>
+                                                <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="fas fa-motorcycle" style={{ marginRight: "5px", color: 'var(--gorent-secondary, #EE4325)' }}></span> Vehicle</p>
                                                 <div className="select-box">
-                                                    <CustomSelect optionArray={[{ value: "Enter a Location", label: "Enter a Location" }, { value: "Puri Station", label: "Puri Station" }]} value={dropoffLocation} onChange={value => setDropoffLocation(value)} />
+                                                    <CustomSelect optionArray={getTaxonomyOptions('rental-category')} value={vehicleType} onChange={value => setVehicleType(value)} />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-xl-3 col-lg-3 col-md-4 col-6">
+                                        <div className="col-xl col-lg-4 col-md-6 col-6">
                                             <div className="booking-one__input-box" style={{ marginBottom: '15px' }}>
-                                                <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><img src="/icon/motorcross.png" alt="icon" style={{ width: "20px", marginRight: "5px" }} /> Vehicle type</p>
+                                                <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="fas fa-gas-pump" style={{ marginRight: "5px", color: 'var(--gorent-secondary, #EE4325)' }}></span> Fuel</p>
                                                 <div className="select-box">
-                                                    <CustomSelect optionArray={[{ value: "Motorcycle", label: "Motorcycle" }, { value: "Scooter", label: "Scooter" }, { value: "Car", label: "Car" }, { value: "Bus", label: "Bus" }]} value={carType} onChange={value => setCarType(value)} />
+                                                    <CustomSelect optionArray={getTaxonomyOptions('fuel-type')} value={fuelType} onChange={value => setFuelType(value)} />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-xl-2 col-lg-2 col-md-6 col-6">
+                                        <div className="col-xl col-lg-4 col-md-6 col-6">
                                             <div className="booking-one__input-box" style={{ marginBottom: '15px' }}>
-                                                <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="icon-date" style={{ marginRight: "5px" }}></span> Date</p>
-                                                <input type="date" value={date} onChange={e => setDate(e.target.value)} />
+                                                <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="fas fa-tag" style={{ marginRight: "5px", color: 'var(--gorent-secondary, #EE4325)' }}></span> Brand</p>
+                                                <div className="select-box">
+                                                    <CustomSelect optionArray={getTaxonomyOptions('brand')} value={brand} onChange={value => setBrand(value)} />
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="col-xl-3 col-lg-3 col-md-6 col-12 d-flex align-items-end">
-                                            <div className="booking-one__btn-box w-100" style={{ marginBottom: '15px' }}>
-                                                <button type="submit" className="thm-btn w-100" style={{ width: '100%', justifyContent: 'center' }}>
-                                                    Book Now
-                                                    <span className="fas fa-arrow-right"></span>
+                                        <div className="col-xl col-lg-4 col-md-6 col-12 d-flex align-items-end justify-content-center">
+                                            <div className="booking-one__btn-box" style={{ marginBottom: '15px' }}>
+                                                <button type="submit" className="thm-btn" style={{ justifyContent: 'center', padding: '10px 30px' }}>
+                                                    Search
+                                                    <span className="fas fa-search" style={{ marginLeft: '10px' }}></span>
                                                 </button>
                                             </div>
                                         </div>
