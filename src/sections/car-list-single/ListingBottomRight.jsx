@@ -3,6 +3,7 @@
 import React from 'react';
 import infoImg from "../../assets/images/listing/listing-single-seller-info-img-1.jpg";
 import Link from 'next/link';
+import DynamicBookingForm from './DynamicBookingForm';
 
 const ListingBottomRight = ({ vehicle }) => {
   if (!vehicle || !vehicle.data) return null;
@@ -16,61 +17,7 @@ const ListingBottomRight = ({ vehicle }) => {
           <p>Daily rate</p>
           <h3>₹{price}</h3>
         </div>
-        <div className="listing-single__rent-car listing-single__single-box">
-          <h3 className="listing-single__rent-car-title">Rent This Vehicle</h3>
-          <div className="listing-single__rent-car-content">
-            <div className="listing-single__rent-car-content-form">
-              <div className="listing-single__rent-car-date-box">
-                <p className="listing-single__rent-car-date-title">Pick-Up</p>
-                <div className="listing-single__rent-car-date-time-box">
-                  <input type="date" name="date" />
-                  <input type="time" name="time" className="listing-single__rent-car-time-box" />
-                </div>
-              </div>
-              <div className="listing-single__rent-car-date-box">
-                <p className="listing-single__rent-car-date-title">Drop-Off</p>
-                <div className="listing-single__rent-car-date-time-box">
-                  <input type="date" name="date" />
-                  <input type="time" name="time" className="listing-single__rent-car-time-box" />
-                </div>
-              </div>
-              <div className="listing-single__rent-car-extra">
-                <h3 className="listing-single__rent-car-extra-title">Add Extra:</h3>
-                <ul className="list-unstyled">
-                  <li>
-                    <div className="checked-box">
-                      <input type="checkbox" name="f_extra1" id="f_extra1" />
-                      <label htmlFor="f_extra1"><span></span>Helmet</label>
-                    </div>
-                    <div className="counts-box"><p>₹50</p></div>
-                  </li>
-                  <li>
-                    <div className="checked-box">
-                      <input type="checkbox" name="f_extra2" id="f_extra2" />
-                      <label htmlFor="f_extra2"><span></span>Insurance</label>
-                    </div>
-                    <div className="counts-box"><p>₹100</p></div>
-                  </li>
-                </ul>
-              </div>
-              <div className="listing-single__rent-car-price-box">
-                <ul className="list-unstyled">
-                  <li>
-                    <div className="title"><p>Subtotal</p></div>
-                    <div className="price"><p>₹{price}</p></div>
-                  </li>
-                  <li>
-                    <div className="title"><p>Total Payable</p></div>
-                    <div className="price"><p>₹{price}</p></div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="listing-single__btn-box-2">
-            <Link href="#" className="thm-btn">Rent Now<span className="fas fa-arrow-right"></span></Link>
-          </div>
-        </div>
+        <DynamicBookingForm />
         
         <div className="listing-single__contact-info listing-single__single-box">
           <div className="listing-single__contact-phone">

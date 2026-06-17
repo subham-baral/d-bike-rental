@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 const ContactMain = () => {
   const [formConfig, setFormConfig] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   useEffect(() => {
     const fetchFormConfig = async () => {
@@ -29,11 +31,14 @@ const ContactMain = () => {
     fetchFormConfig();
   }, []);
 
-  const handleContactSubmit = e => {
+  const handleContactSubmit = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     
     if (!formConfig) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
 
     const contactData = {};
     formConfig.fields.forEach(field => {
@@ -43,16 +48,25 @@ const ContactMain = () => {
       }
     });
 
-    console.log('Contact Data:', contactData);
-    
-    // API Call placeholder
-    // await fetch('/api/contact', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(contactData),
-    // });
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/public/forms/${formConfig.slug}/submit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(contactData),
+      });
 
-    form.reset();
+      if (res.ok) {
+         setSubmitStatus('success');
+         form.reset();
+      } else {
+         setSubmitStatus('error');
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -141,14 +155,34 @@ const ContactMain = () => {
                                         
                                         <div className="col-xl-12">
                                             <div className="contact-page__btn-box">
-                                                <button type="submit" className="thm-btn contact-page__btn" data-loading-text="Please wait...">
+                                                <button type="submit" className="thm-btn contact-page__btn" disabled={isSubmitting}>
                                                     <span className="thm-btn-text">
-                                                      {formConfig.settings?.submit_button_text || "Send A Message"}
+                                                      {isSubmitting ? "Sending..." : formConfig.settings?.submit_button_text || "Send A Message"}
                                                     </span>
-                                                    <span className="thm-btn-icon-box"><i className="fas fa-arrow-right"></i></span>
+                                                    <span className="thm-btn-icon-box">
+                                                        {isSubmitting ? (
+                                                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" style={{ width: '1em', height: '1em' }}></span>
+                                                        ) : (
+                                                            <i className="fas fa-arrow-right"></i>
+                                                        )}
+                                                    </span>
                                                 </button>
                                             </div>
                                         </div>
+                                        {submitStatus === 'success' && (
+                                            <div className="col-xl-12 mt-4">
+                                                <div className="alert alert-success" style={{ backgroundColor: '#e8f5e9', color: '#2e7d32', border: '1px solid #c8e6c9', borderRadius: '8px' }}>
+                                                    Your message has been sent successfully! We will get back to you soon.
+                                                </div>
+                                            </div>
+                                        )}
+                                        {submitStatus === 'error' && (
+                                            <div className="col-xl-12 mt-4">
+                                                <div className="alert alert-danger" style={{ backgroundColor: '#ffebee', color: '#c62828', border: '1px solid #ffcdd2', borderRadius: '8px' }}>
+                                                    Failed to send message. Please try again.
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </form>
                               ) : (
