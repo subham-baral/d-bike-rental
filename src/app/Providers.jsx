@@ -8,7 +8,7 @@ import VideoPopup from '../components/elements/VideoPopup';
 import SearchProp from '../components/elements/SearchProp';
 import SideBar from '../components/elements/SideBar';
 import MobileNav from '../components/elements/MobileNav';
-import ScrollToTop from '../components/elements/ScrollToTop';
+import WhatsAppButton from '../components/elements/WhatsAppButton';
 const GlobalElements = ({
   children
 }) => {
@@ -22,7 +22,7 @@ const GlobalElements = ({
             <SearchProp />
             <SideBar />
             <MobileNav />
-            <ScrollToTop />
+            <WhatsAppButton />
             <VideoPopup />
         </div>;
 };

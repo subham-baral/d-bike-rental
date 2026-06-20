@@ -21,13 +21,13 @@ const LetsTalk = () => {
                     </div>
                     <div className="lets-talk__btn-boxes">
                         <div className="lets-talk__btn-1">
-                            <Link href="/inner/contact" className="thm-btn">
+                            <Link href="/contact" className="thm-btn">
                                 Contact Us
                                 <span className="fas fa-arrow-right"></span>
                             </Link>
                         </div>
                         <div className="lets-talk__btn-2">
-                            <Link href="/inner/car-list-v-1" className="thm-btn">Rent Now<span className="fas fa-arrow-right"></span></Link>
+                            <Link href="/vehicles" className="thm-btn">Rent Now<span className="fas fa-arrow-right"></span></Link>
                         </div>
                     </div>
                 </div>

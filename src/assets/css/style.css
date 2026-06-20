@@ -11265,6 +11265,9 @@ Error Page
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
+  background-color: #e9ecef;
+  padding: 8px 15px;
+  border-radius: 8px;
 }
 
 .listing-single__meta li .icon {
@@ -13366,11 +13369,11 @@ Error Page
 # Services One
 --------------------------------------------------------------*/
 .services-one {
-  position: relative;
-  display: block;
-  counter-reset: count;
-  padding: 120px 0 0;
-  z-index: 1;
+    counter-reset: count;
+    z-index: 1;
+    padding: 0px 0;
+    display: block;
+    position: relative;
 }
 
 @media only screen and (max-width: 767px) {
@@ -23247,9 +23250,9 @@ Product Description
 .services-one {
     counter-reset: count;
     z-index: 1;
+    padding: 0px 0;
     display: block;
     position: relative;
-    padding: 60px 0;
 }
 .about-one { z-index: 1; padding: 60px 0 0 !important; display: block; position: relative; }
 .process-one { counter-reset: count; z-index: 1; padding: 60px 0 0 !important; display: block; position: relative; }
@@ -23262,6 +23265,56 @@ Product Description
 .team-one { z-index: 1; background: linear-gradient(#fff 0%, #eff4fb 46.5%, #fff 100%); padding: 60px 0 !important; display: block; position: relative; overflow: hidden; }
 .blog-one { z-index: 1; padding: 60px 0 !important; display: block; position: relative; overflow: hidden; }
 .site-footer__bg { background-image: url('/detail-front-wheel-engine-parked-motorbike-sunset-copy-space.png') !important; opacity: 0.1 !important; }
+
+@media only screen and (max-width: 767px) {
+  .listing-single {
+    padding: 30px 0 !important;
+  }
+  .listing-single__main-content-inner {
+    padding-bottom: 15px !important;
+  }
+  .listing-single__right {
+    margin-top: 15px !important;
+  }
+  .listing-single__meta {
+    gap: 8px !important;
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
+  }
+  .listing-single__meta li {
+    padding: 6px 12px !important;
+  }
+  .listing-single__title-two {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    font-size: 24px !important;
+  }
+  .dynamic-booking-form-wrapper {
+    padding: 15px !important;
+    margin-bottom: 15px !important;
+  }
+  .listing-single__car-overview, .listing-single__description, .listing-single__feature {
+    margin-bottom: 20px !important;
+  }
+  .listing-single__car-overview-title, .listing-single__description-title, .listing-single__feature-title {
+    margin-bottom: 15px !important;
+    font-size: 20px !important;
+  }
+  .listing-single__car-overview-point {
+    gap: 10px !important;
+  }
+  .listing-single__car-overview-point li {
+    padding-bottom: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  /* Ensure icon color matches in lists */
+  .listing-single__meta li .icon span.fas,
+  .listing-single__meta li .icon i.fas {
+    color: var(--gorent-base) !important;
+    font-weight: 300 !important; /* attempt to make it thinner */
+  }
+}
+
 
 /* User Request: Footer Background Gradient Opacity */
 .site-footer__bg { opacity: 1 !important; -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 100%) !important; mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 100%) !important; }
@@ -23981,4 +24034,63 @@ Product Description
 
 p.main-slider__sub-title-two {
     font-size: 18px !important;
+}
+
+/* 2x2 Grid and Global fixes */
+.listing-single__meta {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.listing-single__meta li {
+  width: 100%;
+}
+.listing-single__meta li .icon span.fas,
+.listing-single__meta li .icon i.fas {
+  color: var(--gorent-base) !important;
+  font-weight: 400 !important;
+}
+
+/* Aggressive mobile specific fixes to minimize spaces */
+@media only screen and (max-width: 767px) {
+  .listing-single {
+    padding: 20px 0 !important;
+  }
+  .listing-single__right {
+    margin-top: 10px !important;
+  }
+  .listing-single__meta {
+    gap: 8px !important;
+    margin-top: 5px !important;
+    margin-bottom: 10px !important;
+  }
+  .listing-single__meta li {
+    padding: 5px 10px !important;
+  }
+  .listing-single__title-two {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    font-size: 22px !important;
+  }
+  .dynamic-booking-form-wrapper {
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  .listing-single__car-overview, .listing-single__description, .listing-single__feature {
+    margin-bottom: 15px !important;
+  }
+  .listing-single__car-overview-title, .listing-single__description-title, .listing-single__feature-title {
+    margin-bottom: 10px !important;
+    font-size: 18px !important;
+  }
+  .listing-single__car-overview-point {
+    gap: 5px !important;
+  }
+  .listing-single__car-overview-point li {
+    padding-bottom: 5px !important;
+    margin-bottom: 5px !important;
+  }
+  .listing-single__main-content-inner {
+    padding-bottom: 10px !important;
+  }
 }

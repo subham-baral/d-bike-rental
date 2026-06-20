@@ -88,7 +88,7 @@ const DynamicBookingForm = () => {
   }
 
   return (
-    <div className="dynamic-booking-form-wrapper">
+    <div className="dynamic-booking-form-wrapper" id="booking-form-section">
       <style jsx>{`
         .dynamic-booking-form-wrapper {
           background: #ffffff;

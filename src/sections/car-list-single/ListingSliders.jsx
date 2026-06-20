@@ -28,12 +28,20 @@ const ListingSliders = ({ vehicle }) => {
     videoUrl: "", // Remove video logic if not supported by backend
     lists: [
       {
-        icon: "icon-fuel-type",
-        text: vehicle.taxonomy_terms_resolved?.find(t => t.taxonomy_slug === 'fuel-type')?.name || "Petrol"
+        icon: "icon-calendar",
+        text: vehicle.data.title || "Activa 6 g"
+      },
+      {
+        icon: "icon-mileage",
+        text: vehicle.data.mileage ? `${vehicle.data.mileage} Mileage` : "Unlimited Mileage"
       },
       {
         icon: "fas fa-motorcycle",
         text: vehicle.taxonomy_terms_resolved?.find(t => t.taxonomy_slug === 'vehicle-type')?.name || "Standard"
+      },
+      {
+        icon: "icon-fuel-type",
+        text: vehicle.taxonomy_terms_resolved?.find(t => t.taxonomy_slug === 'fuel-type')?.name || "Petrol"
       }
     ]
   }));
@@ -82,10 +90,17 @@ const ListingSliders = ({ vehicle }) => {
                             </ul>
                             <div className="listing-single__btn-and-video-box">
                               <div className="listing-single__btn-box">
-                                <Link href="#" className="thm-btn">
+                                <a 
+                                  href="#booking-form-section" 
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    document.getElementById('booking-form-section')?.scrollIntoView({ behavior: 'smooth' });
+                                  }}
+                                  className="thm-btn"
+                                >
                                   Book Now
                                   <span className="fas fa-arrow-right"></span>
-                                </Link>
+                                </a>
                               </div>
                             </div>
                           </div>

@@ -5,7 +5,7 @@ export const metadata = {
   title: 'D bike rental',
   description: 'D Bike Rental - Your premier bike rental service',
   icons: {
-    icon: '/favicon.ico' // Default fallback, can be updated later if needed
+    icon: '/d-bike-fav.png'
   }
 };
 export default function RootLayout({
