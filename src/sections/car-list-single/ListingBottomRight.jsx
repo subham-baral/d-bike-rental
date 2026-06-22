@@ -9,6 +9,8 @@ const ListingBottomRight = ({ vehicle }) => {
   if (!vehicle || !vehicle.data) return null;
 
   const price = vehicle.data.price_per_day || 499;
+  const bikeName = vehicle.data.title || "a bike";
+  const whatsappUrl = `https://wa.me/918112003520?text=${encodeURIComponent(`Hi, I am interested in renting the ${bikeName} from your website.`)}`;
 
   return (
     <div className="col-xl-4 col-lg-5">
@@ -25,8 +27,8 @@ const ListingBottomRight = ({ vehicle }) => {
             <p className="listing-single__contact-phone-text">Contact D-Bike Rental Support</p>
           </div>
           <div className="listing-single__contact-btn-box">
-            <a href="#"> <i className="fab fa-whatsapp"></i>Whatsapp</a>
-            <a href="mailto:dbikerental@gmail.com"> <i className="far fa-envelope"></i>Email Address</a>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"> <i className="fab fa-whatsapp"></i>Whatsapp</a>
+            <a href="mailto:dbikerental1@gmail.com"> <i className="far fa-envelope"></i>Email Address</a>
           </div>
         </div>
       </div>

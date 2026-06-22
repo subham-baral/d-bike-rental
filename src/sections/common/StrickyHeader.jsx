@@ -11,6 +11,7 @@ const StrickyHeader = () => {
   const {
     setIsSearch,
     setIsSidebar,
+    setIsMobileManu,
     cartCount
   } = useGorentContext();
   const [isStick, setIsSticky] = useState(false);
@@ -39,13 +40,11 @@ const StrickyHeader = () => {
                         </div>
                         <div className="main-menu__middle-box">
                             <div className="main-menu__main-menu-box">
-                                <a href="#" className="mobile-nav__toggler"><i className="fa fa-bars"></i></a>
+                                <a href="#" className="mobile-nav__toggler" onClick={(e) => { e.preventDefault(); setIsMobileManu(pre => !pre); }}><i className="fa fa-bars"></i></a>
                                 <MainManuList onePageManuList={pathName === "/index-one-page" ? onePageManuListOne : onePageManuListThree} />
                             </div>
                             <div className="main-menu__search-cart-box">
-                                <div className="main-menu__search-box" onClick={() => setIsSearch(pre => !pre)}>
-                                    <a href="#" className="main-menu__search search-toggler icon-search"></a>
-                                </div>
+
                                 <div className="main-menu__cart-box">
                                 </div>
                             </div>
@@ -62,7 +61,7 @@ const StrickyHeader = () => {
                                 </div>
                             </div>
                             <div className="main-menu__nav-sidebar-icon" onClick={() => setIsSidebar(pre => !pre)}>
-                                <a className="navSidebar-button" href="#">
+                                <a className="navSidebar-button" href="#" onClick={(e) => e.preventDefault()}>
                                     <span className="icon-dots-menu-one"></span>
                                     <span className="icon-dots-menu-two"></span>
                                     <span className="icon-dots-menu-three"></span>

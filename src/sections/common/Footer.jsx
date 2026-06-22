@@ -27,19 +27,23 @@ const linkOne = [{
 }];
 const linkTwo = [{
   id: 1,
-  link: "#",
-  title: "Terms and Condition"
+  link: "/terms-and-conditions",
+  title: "Terms and Conditions"
 }, {
   id: 2,
-  link: "#",
+  link: "/privacy-policy",
   title: "Privacy Policy"
 }, {
   id: 3,
-  link: "#",
-  title: "Pricing"
+  link: "/faq",
+  title: "FAQ"
 }, {
   id: 4,
-  link: "#",
+  link: "/gallery",
+  title: "Gallery"
+}, {
+  id: 5,
+  link: "/sitemap",
   title: "Sitemap"
 }];
 const Footer = () => {
@@ -66,11 +70,9 @@ const Footer = () => {
                 <p className="footer-widget__about-text">Car Is Where Early Adopters And Innovation
                   Seekers Find Lively
                   Imaginative Tech.</p>
-                <div className="footer-widget__social" style={{ display: 'flex', gap: '15px' }}>
-                  <a href="#" style={{ backgroundColor: 'white', color: 'var(--gorent-secondary)', fontSize: '12px', width: '35px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', transition: '0.3s' }}><i className="icon-facebook"></i></a>
-                  <a href="#" style={{ backgroundColor: 'white', color: 'var(--gorent-secondary)', fontSize: '12px', width: '35px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', transition: '0.3s' }}><i className="icon-twitter"></i></a>
-                  <a href="#" style={{ backgroundColor: 'white', color: 'var(--gorent-secondary)', fontSize: '12px', width: '35px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', transition: '0.3s' }}><i className="icon-instagram"></i></a>
-                  <a href="#" style={{ backgroundColor: 'white', color: 'var(--gorent-secondary)', fontSize: '12px', width: '35px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', transition: '0.3s' }}><i className="icon-youtube"></i></a>
+                <div className="site-footer__social" style={{ display: 'flex', gap: '15px' }}>
+                  <a href="https://www.facebook.com/people/D-Bike-Rental/pfbid02jkCiyQpTmUt9K18BvC8VqTXmyKnegT7UJViVR5jygvasuiP6Vapxm3BXgsPWjy7tl/" target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'white', color: 'var(--gorent-secondary)', fontSize: '12px', width: '35px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', transition: '0.3s' }}><i className="icon-facebook"></i></a>
+                  <a href="https://www.instagram.com/dbikerental/?hl=en" target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'white', color: 'var(--gorent-secondary)', fontSize: '12px', width: '35px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', transition: '0.3s' }}><i className="icon-instagram"></i></a>
                 </div>
               </div>
             </div>
@@ -150,7 +152,7 @@ const Footer = () => {
                     once: true
                   }}>
                     <div className="icon">
-                      <span className="icon-call"></span>
+                      <span className="icon-call" style={{ transform: 'scaleX(-1)', display: 'inline-block' }}></span>
                     </div>
                     <p><a href="tel:+918112003520">+91 81120 03520</a></p>
                   </motion.li>
@@ -170,7 +172,7 @@ const Footer = () => {
                     <div className="icon">
                       <span className="icon-envelope"></span>
                     </div>
-                    <p><a href="mailto:dbikerental@gmail.com">dbikerental@gmail.com</a></p>
+                    <p><a href="mailto:dbikerental1@gmail.com">dbikerental1@gmail.com</a></p>
                   </motion.li>
                 </ul>
               </div>

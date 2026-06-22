@@ -32,24 +32,22 @@ const MobileNav = () => {
                 </div>
                 <ul className="mobile-nav__contact list-unstyled">
                     <li>
-                        <i className="fa fa-envelope"></i>
-                        <a href="mailto:dbikerental@gmail.com">dbikerental@gmail.com</a>
+                        <i className="icon-envelope-2"></i>
+                        <a href="mailto:dbikerental1@gmail.com">dbikerental1@gmail.com</a>
                     </li>
                     <li>
-                        <i className="fas fa-phone"></i>
+                        <i className="icon-call-2"></i>
                         <a href="tel:+918112003520">+91 81120 03520</a>
                     </li>
                     <li style={{ fontSize: '15px', display: 'flex', alignItems: 'flex-start' }}>
-                        <i className="fas fa-map-marker-alt" style={{ marginRight: '10px', marginTop: '4px', flexShrink: 0 }}></i>
+                        <i className="icon-pin-2" style={{ marginRight: '10px', marginTop: '4px', flexShrink: 0 }}></i>
                         <span>Gopal Ballabh Rd, near Shakuntala Palace, near Puri Railway station, Puri, Odisha 752001</span>
                     </li>
                 </ul>
                 <div className="mobile-nav__top">
                     <div className="mobile-nav__social">
-                        <a href="#" className="fab fa-twitter"></a>
-                        <a href="#" className="fab fa-facebook-square"></a>
-                        <a href="#" className="fab fa-pinterest-p"></a>
-                        <a href="#" className="fab fa-instagram"></a>
+                        <a href="https://www.facebook.com/people/D-Bike-Rental/pfbid02jkCiyQpTmUt9K18BvC8VqTXmyKnegT7UJViVR5jygvasuiP6Vapxm3BXgsPWjy7tl/" target="_blank" rel="noopener noreferrer"><i className="icon-facebook"></i></a>
+                        <a href="https://www.instagram.com/dbikerental/?hl=en" target="_blank" rel="noopener noreferrer"><i className="icon-instagram"></i></a>
                     </div>
                 </div>
             </div>

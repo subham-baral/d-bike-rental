@@ -50,55 +50,31 @@ const SideBar = () => {
                                     <h4>About Us</h4>
                                     <div className="inner-text">
                                         <p>
-                                            Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                            It has roots in a piece of classical Latin literature from 45 BC.
+                                            Welcome to D Bike Rental. We offer the best scooty, bike, and car rentals in Puri at affordable prices. Enjoy your ride with our well-maintained vehicles.
                                         </p>
                                     </div>
                                 </div>
 
-                                {/* Form */}
-                                <div className="form-inner">
-                                    <h4>Get a free quote</h4>
 
-                                    <form onSubmit={handleSubmit}>
-                                        <div className="form-group">
-                                            <input type="text" name="name" placeholder="Name" required />
-                                        </div>
-
-                                        <div className="form-group">
-                                            <input type="email" name="email" placeholder="Email" required />
-                                        </div>
-
-                                        <div className="form-group">
-                                            <textarea name="message" placeholder="Message..."></textarea>
-                                        </div>
-
-                                        <div className="form-group message-btn">
-                                            <button type="submit" className="thm-btn form-inner__btn">
-                                                Submit Now
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
 
                                 {/* Contact Info */}
                                 <div className="sidebar-contact-info">
                                     <h4>Contact Info</h4>
                                     <ul className="list-unstyled">
                                         <li>
-                                            <span className="icon-pin"></span>
+                                            <span className="icon-pin-2"></span>
                                             Gopal Ballabh Rd, near Shakuntala Palace, near Puri Railway station, Puri, Odisha 752001
                                         </li>
                                         <li>
-                                            <span className="icon-call"></span>
+                                            <span className="icon-call-2"></span>
                                             <a href="tel:+918112003520">
                                                 +91 81120 03520
                                             </a>
                                         </li>
                                         <li>
-                                            <span className="icon-envelope"></span>
-                                            <a href="mailto:dbikerental@gmail.com">
-                                                dbikerental@gmail.com
+                                            <span className="icon-envelope-2"></span>
+                                            <a href="mailto:dbikerental1@gmail.com">
+                                                dbikerental1@gmail.com
                                             </a>
                                         </li>
                                     </ul>
@@ -108,16 +84,10 @@ const SideBar = () => {
                                 <div className="thm-social-link1">
                                     <ul className="social-box list-unstyled">
                                         <li>
-                                            <a href="#"><i className="icon-facebook" /></a>
+                                            <a href="https://www.facebook.com/people/D-Bike-Rental/pfbid02jkCiyQpTmUt9K18BvC8VqTXmyKnegT7UJViVR5jygvasuiP6Vapxm3BXgsPWjy7tl/" target="_blank" rel="noopener noreferrer"><i className="icon-facebook" /></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i className="icon-twitter" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i className="icon-linkedin" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i className="icon-dribble-big-logo" /></a>
+                                            <a href="https://www.instagram.com/dbikerental/?hl=en" target="_blank" rel="noopener noreferrer"><i className="icon-instagram" /></a>
                                         </li>
                                     </ul>
                                 </div>

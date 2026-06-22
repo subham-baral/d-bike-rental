@@ -50,10 +50,8 @@ const SingleHeaderOne = () => {
                             <Link href="/inner/sign-up">Register</Link>
                         </div>
                         <div className="main-menu__social">
-                            <a href="#"><i className="icon-facebook"></i></a>
-                            <a href="#"><i className="icon-twitter"></i></a>
-                            <a href="#"><i className="icon-instagram"></i></a>
-                            <a href="#"><i className="icon-youtube"></i></a>
+                            <a href="https://www.facebook.com/people/D-Bike-Rental/pfbid02jkCiyQpTmUt9K18BvC8VqTXmyKnegT7UJViVR5jygvasuiP6Vapxm3BXgsPWjy7tl/" target="_blank" rel="noopener noreferrer"><i className="icon-facebook"></i></a>
+                            <a href="https://www.instagram.com/dbikerental/?hl=en" target="_blank" rel="noopener noreferrer"><i className="icon-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -68,13 +66,11 @@ const SingleHeaderOne = () => {
                         </div>
                         <div className="main-menu__middle-box">
                             <div className="main-menu__main-menu-box">
-                                <a href="#" className="mobile-nav__toggler" onClick={() => setIsMobileManu(pre => !pre)}><i className="fa fa-bars"></i></a>
+                                <a href="#" className="mobile-nav__toggler" onClick={(e) => { e.preventDefault(); setIsMobileManu(pre => !pre); }}><i className="fa fa-bars"></i></a>
                                 <MainManuListSinglePage />
                             </div>
                             <div className="main-menu__search-cart-box">
-                                <div className="main-menu__search-box" onClick={() => setIsSearch(pre => !pre)}>
-                                    <a href="#" className="main-menu__search search-toggler icon-search"></a>
-                                </div>
+
                                 <div className="main-menu__cart-box">
                                     <Link href="/inner/cart" className="main-menu__cart">
                                         <span className="far fa-shopping-cart"></span>
@@ -95,7 +91,7 @@ const SingleHeaderOne = () => {
                                 </div>
                             </div>
                             <div className="main-menu__nav-sidebar-icon" onClick={() => setIsSidebar(pre => !pre)}>
-                                <a className="navSidebar-button" href="#">
+                                <a className="navSidebar-button" href="#" onClick={(e) => e.preventDefault()}>
                                     <span className="icon-dots-menu-one"></span>
                                     <span className="icon-dots-menu-two"></span>
                                     <span className="icon-dots-menu-three"></span>

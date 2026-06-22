@@ -10,11 +10,11 @@ const About = () => {
   return <>
             <Banner breadcrumb='About Us' />
             <AboutOne sectionClass='about-page' />
+            <RideExperience />
             <ServiceInner sectionClass='services-one' />
             <BookingInner />
             <ListingOne />
             <TestimonialOne />
-            <RideExperience />
         </>;
 };
 export default About;

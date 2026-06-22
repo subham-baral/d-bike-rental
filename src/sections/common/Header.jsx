@@ -31,7 +31,7 @@ const Header = () => {
                             <i className="icon-envelope-2"></i>
                         </div>
                         <div className="text">
-                            <p><a href="mailto:dbikerental@gmail.com">dbikerental@gmail.com</a>
+                            <p><a href="mailto:dbikerental1@gmail.com">dbikerental1@gmail.com</a>
                             </p>
                         </div>
                     </li>
@@ -48,10 +48,8 @@ const Header = () => {
                     <div className="main-menu__top-login-reg-box">
                     </div>
                     <div className="main-menu__social">
-                        <a href="#"><i className="icon-facebook"></i></a>
-                        <a href="#"><i className="icon-twitter"></i></a>
-                        <a href="#"><i className="icon-instagram"></i></a>
-                        <a href="#"><i className="icon-youtube"></i></a>
+                        <a href="https://www.facebook.com/people/D-Bike-Rental/pfbid02jkCiyQpTmUt9K18BvC8VqTXmyKnegT7UJViVR5jygvasuiP6Vapxm3BXgsPWjy7tl/" target="_blank" rel="noopener noreferrer"><i className="icon-facebook"></i></a>
+                        <a href="https://www.instagram.com/dbikerental/?hl=en" target="_blank" rel="noopener noreferrer"><i className="icon-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -66,7 +64,7 @@ const Header = () => {
                     </div>
                     <div className="main-menu__middle-box">
                         <div className="main-menu__main-menu-box">
-                            <a href="#" className="mobile-nav__toggler" onClick={() => setIsMobileManu(pre => !pre)}><i className="fa fa-bars"></i></a>
+                            <a href="#" className="mobile-nav__toggler" onClick={(e) => { e.preventDefault(); setIsMobileManu(pre => !pre); }}><i className="fa fa-bars"></i></a>
                             <MainManuList onePageManuList={onePageManuListOne} />
                         </div>
                     </div>
@@ -82,7 +80,7 @@ const Header = () => {
                             </div>
                         </div>
                         <div className="main-menu__nav-sidebar-icon" onClick={() => setIsSidebar(pre => !pre)}>
-                            <a className="navSidebar-button" href="#">
+                            <a className="navSidebar-button" href="#" onClick={(e) => e.preventDefault()}>
                                 <span className="icon-dots-menu-one"></span>
                                 <span className="icon-dots-menu-two"></span>
                                 <span className="icon-dots-menu-three"></span>

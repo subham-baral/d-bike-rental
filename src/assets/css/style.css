@@ -49,12 +49,11 @@
 
 /* About page: custom ride experience */
 .ride-experience {
+    background: radial-gradient(circle at 82% 18%, #ff4c302e, #0000 31%), #111318;
+    padding: 103px 0;
     position: relative;
     overflow: hidden;
-    padding: 110px 0;
-    background:
-        radial-gradient(circle at 82% 18%, rgba(255, 76, 48, .18), transparent 31%),
-        #111318;
+    margin-top: 145px;
 }
 
 .ride-experience__glow {
@@ -23250,18 +23249,30 @@ Product Description
 .services-one {
     counter-reset: count;
     z-index: 1;
-    padding: 0px 0;
+    padding: 0;
     display: block;
     position: relative;
+    padding-top: 50px;
 }
 .about-one { z-index: 1; padding: 60px 0 0 !important; display: block; position: relative; }
-.process-one { counter-reset: count; z-index: 1; padding: 60px 0 0 !important; display: block; position: relative; }
+.process-one {
+    counter-reset: count;
+    z-index: 1;
+    display: block;
+    position: relative;
+    padding: 150px 0 0 !important;
+}
 .booking-one { z-index: 1; padding: 60px 0 0 !important; display: block; position: relative; }
 .why-choose-one { z-index: 1; padding: 60px 0 0 !important; display: block; position: relative; }
 .counter-one { z-index: 1; padding: 60px 0 0 !important; display: block; position: relative; }
 .listing-one { z-index: 1; padding: 60px 0 120px !important; display: block; position: relative; }
 .pricing-one { z-index: 1; padding: 60px 0 90px !important; display: block; position: relative; }
-.testimonial-one { z-index: 1; padding: 30px 0 !important; display: block; position: relative; }
+.testimonial-one {
+    z-index: 1;
+    display: block;
+    position: relative;
+    padding: 0px 0px 30px 0px !important;
+}
 .team-one { z-index: 1; background: linear-gradient(#fff 0%, #eff4fb 46.5%, #fff 100%); padding: 60px 0 !important; display: block; position: relative; overflow: hidden; }
 .blog-one { z-index: 1; padding: 60px 0 !important; display: block; position: relative; overflow: hidden; }
 .site-footer__bg { background-image: url('/detail-front-wheel-engine-parked-motorbike-sunset-copy-space.png') !important; opacity: 0.1 !important; }
@@ -23310,7 +23321,7 @@ Product Description
   /* Ensure icon color matches in lists */
   .listing-single__meta li .icon span.fas,
   .listing-single__meta li .icon i.fas {
-    color: var(--gorent-base) !important;
+    color: var(--gorent-secondary) !important;
     font-weight: 300 !important; /* attempt to make it thinner */
   }
 }
@@ -23418,14 +23429,15 @@ Product Description
 
 /* User Request: Booking wrap CSS */
 .booking-one__wrap {
-    background-color: var(--gorent-black) !important;
     z-index: 1;
+    display: block;
+    position: relative;
+    background-color: var(--gorent-black) !important;
     border-radius: 0 !important;
     width: 100% !important;
     max-width: 1680px !important;
     margin: 0 auto !important;
-    display: block;
-    position: relative;
+    padding: 50px 0px 50px 0px;
 }
 
 /* User Request: Booking BG */
@@ -24047,7 +24059,7 @@ p.main-slider__sub-title-two {
 }
 .listing-single__meta li .icon span.fas,
 .listing-single__meta li .icon i.fas {
-  color: var(--gorent-base) !important;
+  color: var(--gorent-secondary) !important;
   font-weight: 400 !important;
 }
 
@@ -24093,4 +24105,142 @@ p.main-slider__sub-title-two {
   .listing-single__main-content-inner {
     padding-bottom: 10px !important;
   }
+}
+
+.section-title.text-center.sec-title-animation.animation-style1 {
+    margin-bottom: 0 !important;
+}
+
+.contact-page__form-title {
+    letter-spacing: 2px !important;
+}
+
+.contact-page__btn:hover .thm-btn-text,
+.contact-page__btn:hover .thm-btn-icon-box,
+.contact-page__btn:hover i {
+    color: #000 !important;
+}
+
+@media (max-width: 767px) {
+    .ride-experience {
+        padding: 55px 0;
+        margin-top: 0;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .services-one {
+        padding: 0px 0 0 !important;
+    }
+} 
+@media (max-width: 991px) {
+    .listing-one {
+        padding: 30px 10px 20px !important;
+    }
+} 
+@media (max-width: 991px) {
+    .listing-one__btn-box .thm-btn {
+        padding: 6px 5px !important;
+        font-size: 13px !important;
+    }
+} 
+@media (max-width: 991px) {
+    .testimonial-one {
+        z-index: 1;
+        display: block;
+        position: relative;
+        padding: 10px !important;
+    }
+}
+
+.mobile-nav__social a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    border-radius: 50% !important;
+    background-color: transparent !important;
+    font-size: 16px !important;
+    color: var(--gorent-black) !important;
+}
+
+.sidebar-widget-container .thm-social-link1 ul li a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 50% !important;
+    background-color: transparent !important;
+    font-size: 16px !important;
+    color: var(--gorent-white) !important;
+}
+
+.mobile-nav__social a:hover {
+    background-color: var(--gorent-secondary) !important;
+    border-color: var(--gorent-secondary) !important;
+    color: var(--gorent-white) !important;
+}
+
+.sidebar-widget-container .thm-social-link1 ul li a:hover {
+    background-color: var(--gorent-white) !important;
+    border-color: var(--gorent-white) !important;
+    color: var(--gorent-black) !important;
+}
+
+.main-slider__sub-title-two {
+    text-transform: none !important;
+}
+
+/* CustomSelect Extracted Base Styles */
+.nice-select.selectmenu.wide {
+    display: flex;
+    align-items: center;
+    height: auto;
+    min-height: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.nice-select.selectmenu.wide .current {
+    white-space: normal;
+    word-break: break-word;
+    flex: 1;
+    padding-right: 20px;
+    line-height: 1.2;
+}
+
+.nice-select.selectmenu.wide .option {
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.4;
+    padding: 10px 18px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width: 767px) {
+    .booking-one, .why-choose-one, .counter-one {
+        z-index: 1;
+        display: block;
+        position: relative;
+        padding: 0px 0 0 !important;
+    }
+
+    .form-control,
+    .booking-one__input-box input[type="text"],
+    .booking-one__input-box input[type="date"],
+    .booking-one__input-box input[type="email"],
+    .booking-one__input-box select,
+    .booking-one__input-box .nice-select {
+        height: 40px !important;
+        min-height: 40px !important;
+        font-size: 14px !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        line-height: normal !important;
+    }
 }

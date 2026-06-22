@@ -28,7 +28,7 @@ const ListingSliders = ({ vehicle }) => {
     videoUrl: "", // Remove video logic if not supported by backend
     lists: [
       {
-        icon: "icon-calendar",
+        icon: "far fa-check-circle",
         text: vehicle.data.title || "Activa 6 g"
       },
       {
@@ -36,7 +36,7 @@ const ListingSliders = ({ vehicle }) => {
         text: vehicle.data.mileage ? `${vehicle.data.mileage} Mileage` : "Unlimited Mileage"
       },
       {
-        icon: "fas fa-motorcycle",
+        icon: vehicle.taxonomy_terms_resolved?.find(t => t.taxonomy_slug === 'vehicle-type')?.name?.toLowerCase().includes('car') ? "fas fa-car" : "fas fa-motorcycle",
         text: vehicle.taxonomy_terms_resolved?.find(t => t.taxonomy_slug === 'vehicle-type')?.name || "Standard"
       },
       {
@@ -113,14 +113,16 @@ const ListingSliders = ({ vehicle }) => {
             </Swiper>
           </div>
         </div>
-        <div className="listing-single__nav">
-          <div className="swiper-button-next" id="listing-single__swiper-button-prev" onClick={() => swiperInstance?.slidePrev()}>
-            <i className="far fa-long-arrow-left"></i>
+        {allImages.length > 1 && (
+          <div className="listing-single__nav">
+            <div className="swiper-button-next" id="listing-single__swiper-button-prev" onClick={() => swiperInstance?.slidePrev()}>
+              <i className="far fa-long-arrow-left"></i>
+            </div>
+            <div className="swiper-button-prev" id="listing-single__swiper-button-next" onClick={() => swiperInstance?.slideNext()}>
+              <i className="far fa-long-arrow-right"></i>
+            </div>
           </div>
-          <div className="swiper-button-prev" id="listing-single__swiper-button-next" onClick={() => swiperInstance?.slideNext()}>
-            <i className="far fa-long-arrow-right"></i>
-          </div>
-        </div>
+        )}
       </div>
 
       <div className="listing-single__thumb-box">

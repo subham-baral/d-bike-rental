@@ -106,28 +106,7 @@ const AboutInner = () => {
                 <Progresbar title="Customer Satisfaction" value={98} />
               </ul>
 
-              <div className="about-one__btn-box-and-call-box">
-                <div className="about-one__btn-box">
-                  <Link href="/inner/about" className="about-one__btn thm-btn">
-                    Read More
-                    <span className="fas fa-arrow-right"></span>
-                  </Link>
-                </div>
 
-                <div className="about-one__call-box">
-                  <div className="about-one__call-box-icon">
-                    <span className="icon-call-2"></span>
-                  </div>
-                  <div className="about-one__call-box-content">
-                    <p>Call to Anytime</p>
-                    <h4>
-                      <a href="tel:+918112003520">
-                        +91 81120 03520
-                      </a>
-                    </h4>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           {/* End Right */}

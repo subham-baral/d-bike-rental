@@ -24,7 +24,7 @@ const ListingBottomLeft = ({ vehicle }) => {
             <ul className="list-unstyled listing-single__car-overview-point">
               <li>
                 <div className="listing-single__car-overview-point-left">
-                  <i className="fas fa-motorcycle"></i>
+                  <i className="fas fa-motorcycle" style={{ color: 'var(--gorent-secondary)' }}></i>
                   <p>Type</p>
                 </div>
                 <div className="listing-single__car-overview-point-right">

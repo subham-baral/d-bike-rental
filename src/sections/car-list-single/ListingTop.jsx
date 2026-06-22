@@ -31,7 +31,7 @@ const ListingTop = ({ vehicle }) => {
               <p>{mileage ? `${mileage} Mileage` : 'Unlimited Mileage'}</p>
             </li>
             <li>
-              <span className="fas fa-motorcycle"></span>
+              <i className="fas fa-motorcycle" style={{ color: 'var(--gorent-secondary)' }}></i>
               <p>{vehicleType !== 'N/A' ? vehicleType : 'Standard'}</p>
             </li>
             <li>
@@ -42,7 +42,7 @@ const ListingTop = ({ vehicle }) => {
           <ul className="list-unstyled listing-single__car-details">
             {helmet_included && (
               <li>
-                <span className="fas fa-hard-hat"></span>
+                <i className="fas fa-hard-hat" style={{ color: 'var(--gorent-secondary)' }}></i>
                 <p>Helmet Included</p>
               </li>
             )}

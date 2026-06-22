@@ -78,7 +78,7 @@ const ContactMain = () => {
                   <div className="col-xl-4 col-lg-4">
                       <div className="contact-info__single">
                           <div className="contact-info__icon">
-                              <span className="icon-call"></span>
+                              <span className="icon-call-2"></span>
                           </div>
                           <p>Contact Us</p>
                           <h3><a href="tel:+918112003520">+91 81120 03520</a></h3>
@@ -89,10 +89,10 @@ const ContactMain = () => {
                   <div className="col-xl-4 col-lg-4">
                       <div className="contact-info__single">
                           <div className="contact-info__icon">
-                              <span className="icon-email"></span>
+                              <span className="icon-envelope-2"></span>
                           </div>
                           <p>Mail Us</p>
-                          <h3><a href="mailto:dbikerental@gmail.com">dbikerental@gmail.com</a></h3>
+                          <h3><a href="mailto:dbikerental1@gmail.com">dbikerental1@gmail.com</a></h3>
                       </div>
                   </div>
                   {/*Contact Two Single End*/}
@@ -100,7 +100,7 @@ const ContactMain = () => {
                   <div className="col-xl-4 col-lg-4">
                       <div className="contact-info__single">
                           <div className="contact-info__icon">
-                              <span className="icon-location"></span>
+                              <span className="icon-pin-2"></span>
                           </div>
                           <p>Our Office Location</p>
                           <h3>Gopal Ballabh Rd, near Shakuntala Palace, Puri</h3>
