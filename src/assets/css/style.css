@@ -23614,47 +23614,67 @@ Product Description
         position: relative !important;
     }
     .listing-one__meta {
-        padding-top: 2px !important;
-        padding-bottom: 2px !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        align-items: flex-start !important;
     }
     .listing-one__meta li {
-        margin-bottom: 2px !important;
+        margin-bottom: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
     .listing-one__meta li .text p {
-        font-size: 13px !important;
+        font-size: 11px !important;
+        white-space: nowrap !important;
+        line-height: 1.2 !important;
+        margin-top: 3px !important;
     }
     .listing-one__meta li .icon {
         font-size: 14px !important;
-        margin-right: 5px !important;
-        height: 30px !important;
-        width: 30px !important;
-        line-height: 30px !important;
+        margin-right: 0 !important;
+        height: 24px !important;
+        width: 24px !important;
+        line-height: 24px !important;
     }
     .listing-one__bottom-flex {
         display: flex !important;
         justify-content: space-between !important;
-        align-items: center !important;
+        align-items: stretch !important;
         margin-top: 10px !important;
+        gap: 5px !important;
     }
     .listing-one__car-rent-box {
         margin-top: 0 !important;
         margin-bottom: 0 !important;
-        padding: 8px 15px !important;
+        padding: 5px 8px !important;
         display: flex !important;
         position: relative !important;
         align-items: center !important;
+        flex: 1 !important;
+        justify-content: center !important;
     }
     .listing-one__car-rent {
-        font-size: 13px !important;
+        font-size: 11px !important;
         white-space: nowrap !important;
         margin: 0 !important;
     }
     .listing-one__car-rent span {
-        font-size: 18px !important;
+        font-size: 14px !important;
+    }
+    .listing-one__btn-box {
+        display: flex !important;
+        align-items: center !important;
     }
     .listing-one__btn-box .thm-btn {
-        padding: 6px 15px !important;
-        font-size: 13px !important;
+        padding: 5px 10px !important;
+        font-size: 12px !important;
+        white-space: nowrap !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+        height: 100% !important;
     }
     
     /* User Request: Make Services 2x2 grid responsive on mobile */
@@ -24242,5 +24262,28 @@ p.main-slider__sub-title-two {
         padding-top: 10px !important;
         padding-bottom: 10px !important;
         line-height: normal !important;
+    }
+}
+
+/* User Request: Mobile enhancements for listing-one */
+.listing-one__img {
+    height: 170px !important;
+}
+@media (max-width: 991px) {
+    .listing-one__meta {
+        align-items: flex-start !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .listing-one__meta li {
+        gap: 0px;
+    }
+    .listing-two__title {
+        margin-bottom: 0;
+    }
+    .listing-two__price-and-btn {
+        padding-top: 0;
     }
 }
