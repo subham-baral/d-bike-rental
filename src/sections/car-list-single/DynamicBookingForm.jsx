@@ -47,7 +47,7 @@ const DynamicBookingForm = () => {
     setSubmitting(true);
     setSubmitStatus(null);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/public/forms/booking-form/submit`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/public/forms/4/booking-form/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
