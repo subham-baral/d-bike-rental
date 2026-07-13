@@ -9,7 +9,7 @@ export const metadata = {
     icon: '/d-bike-fav.png'
   },
   verification: {
-    google: 'LWfHMx7u9OdWeZjEtgCDhcFwsp0UISWRE22NBUf8m3s'
+    google: 'XHdBiUv_82KSTvYPX-MT8_-h7FhK8jm-lTWrYLQ3Ht4'
   }
 };
 export default function RootLayout({
