@@ -7,6 +7,9 @@ export const metadata = {
   description: 'D Bike Rental - Your premier bike rental service',
   icons: {
     icon: '/d-bike-fav.png'
+  },
+  verification: {
+    google: 'LWfHMx7u9OdWeZjEtgCDhcFwsp0UISWRE22NBUf8m3s'
   }
 };
 export default function RootLayout({
