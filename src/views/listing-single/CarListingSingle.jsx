@@ -4,7 +4,7 @@ import CarListingSingleMain from "../../sections/car-list-single/CarListingSingl
 
 const REVALIDATE_SECONDS = 86400;
 
-const getVehicleDetails = async (slug) => {
+export const getVehicleDetails = async (slug) => {
   const url = `${process.env.NEXT_PUBLIC_CMS_API_URL}/delivery/contents`;
   const requestBody = {
     content_type_id: "vehicle",

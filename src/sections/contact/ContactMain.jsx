@@ -49,7 +49,7 @@ const ContactMain = () => {
     });
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/public/forms/${formConfig.slug}/submit`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/public/forms/5/${formConfig.slug}/submit`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(contactData),
