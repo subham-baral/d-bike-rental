@@ -22,9 +22,8 @@ const ServiceOne = () => {
                         </span>
                     </div>
 
-                    <h2 className="section-title__title title-animation">
-                        <TextAnimation text={`Services We’re Providing`} />
-                        <TextAnimation text={`to Customers`} />
+                    <h2 className="section-title__title title-animation" style={{ marginBottom: "20px" }}>
+                        Services We’re Providing
                     </h2>
                 </div>
                 <div className="row">

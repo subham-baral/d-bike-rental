@@ -88,8 +88,7 @@ const AboutOne = ({ sectionClass = "" }) => {
                 </div>
 
                 <h2 className="section-title__title title-animation">
-                  <TextAnimation text="Welcome to D Bike" />
-                  <TextAnimation text="Vehicle Rentals" />
+                  Popular Bike Rental Service in Puri since 2014
                 </h2>
               </div>
 

@@ -24,7 +24,7 @@ const HomeOne = () => {
             <TestimonialOne />
             <FaqOne />
             <LetsTalk />
-            <BlogOne />
+            {/* <BlogOne /> */}
             <Footer />
             <StrickyHeader />
         </div>;
