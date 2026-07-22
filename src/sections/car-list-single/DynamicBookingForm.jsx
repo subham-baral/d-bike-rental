@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-const DynamicBookingForm = () => {
+const DynamicBookingForm = ({ vehicleTitle }) => {
   const [formConfig, setFormConfig] = useState(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -21,11 +21,18 @@ const DynamicBookingForm = () => {
         const result = await res.json();
         setFormConfig(result);
         
-        // Initialize form data state with default empty strings
+        // Initialize form data state with default empty strings & vehicle_name prefill
         const initialData = {};
         result.fields?.forEach(f => {
+          if (f.key === 'vehicle_name') {
+            initialData[f.key] = vehicleTitle || '';
+          } else {
             initialData[f.key] = '';
+          }
         });
+        if (vehicleTitle) {
+          initialData['vehicle_name'] = vehicleTitle;
+        }
         setFormData(initialData);
 
       } catch (error) {
@@ -35,7 +42,13 @@ const DynamicBookingForm = () => {
       }
     };
     fetchFormConfig();
-  }, []);
+  }, [vehicleTitle]);
+
+  useEffect(() => {
+    if (vehicleTitle) {
+      setFormData(prev => ({ ...prev, vehicle_name: vehicleTitle }));
+    }
+  }, [vehicleTitle]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -112,7 +125,7 @@ const DynamicBookingForm = () => {
           bottom: 0;
           width: 40px;
           height: 3px;
-          background: #ff5722;
+          background: #0e426a;
           border-radius: 2px;
         }
         .form-group {
@@ -136,15 +149,15 @@ const DynamicBookingForm = () => {
           color: #333;
         }
         .form-control:focus {
-          border-color: #ff5722;
+          border-color: #0e426a;
           background-color: #fff;
-          box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.1);
+          box-shadow: 0 0 0 3px rgba(14, 66, 106, 0.1);
           outline: none;
         }
         .submit-btn {
           width: 100%;
           padding: 14px;
-          background: #ff5722;
+          background: #0e426a;
           color: white;
           border: none;
           border-radius: 8px;
@@ -158,9 +171,9 @@ const DynamicBookingForm = () => {
           gap: 10px;
         }
         .submit-btn:hover {
-          background: #e64a19;
+          background: #092f4c;
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(230, 74, 25, 0.2);
+          box-shadow: 0 4px 12px rgba(14, 66, 106, 0.25);
         }
         .submit-btn:disabled {
           background: #ffccbc;
@@ -248,6 +261,13 @@ const DynamicBookingForm = () => {
              <>{formConfig.settings?.submit_button_text || "Submit Booking"}</>
           )}
         </button>
+
+        {/* Powered By One9ty CMS */}
+        <div className="text-center py-3">
+          <a href="https://wa.me/9937958910" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}>
+            <small className="text-muted">Powered by One9ty CRM</small>
+          </a>
+        </div>
 
         {submitStatus === 'success' && (
           <div className="status-message status-success">

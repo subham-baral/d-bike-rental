@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: vehicle?.data?.title
-      ? `${vehicle.data.title} | D Bike Rental`
+      ? `Hire ${vehicle.data.title} for day in Puri | D Bike Rental`
       : 'Vehicle Details | D Bike Rental',
     description:
       'Browse our wide selection of well-maintained scooters and motorcycles available for rent in Puri. Find competitive daily rates and book your ride today.',

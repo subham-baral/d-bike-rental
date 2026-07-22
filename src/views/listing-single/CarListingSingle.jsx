@@ -50,12 +50,7 @@ const CarListingSingle = async ({ slug }) => {
     );
   }
 
-  return (
-    <>
-      <Banner breadcrumb={vehicle.data?.title || "Vehicle Details"} />
-      <CarListingSingleMain vehicle={vehicle} />
-    </>
-  );
+  return <CarListingSingleMain vehicle={vehicle} />;
 };
 
 export default CarListingSingle;
