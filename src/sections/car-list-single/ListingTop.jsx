@@ -7,6 +7,10 @@ const ListingTop = ({ vehicle }) => {
 
   // Find some taxonomies if needed
   const getTaxonomyTerm = (slug) => {
+    if (Array.isArray(vehicle.terms)) {
+      const term = vehicle.terms.find(t => t.taxonomy?.slug === slug);
+      if (term) return term.name;
+    }
     const tax = vehicle.taxonomy_terms_resolved?.find(t => t.taxonomy_slug === slug);
     return tax ? tax.name : 'N/A';
   };

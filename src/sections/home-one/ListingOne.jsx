@@ -6,11 +6,29 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import TextAnimation from '../../components/elements/TextAnimation';
 
-const ListingOne = () => {
-    const [vehicles, setVehicles] = useState([]);
-    const [loading, setLoading] = useState(true);
+const getTaxonomyTerm = (item, slug) => {
+    if (Array.isArray(item?.terms)) {
+        const term = item.terms.find(t => t.taxonomy?.slug === slug);
+        if (term) return term.name;
+    }
+    if (Array.isArray(item?.taxonomy_terms_resolved)) {
+        const term = item.taxonomy_terms_resolved.find(t => t.taxonomy_slug === slug);
+        if (term) return term.name;
+    }
+    return null;
+};
+
+const ListingOne = ({ vehicles: initialVehicles }) => {
+    const [vehicles, setVehicles] = useState(initialVehicles || []);
+    const [loading, setLoading] = useState(!initialVehicles || initialVehicles.length === 0);
 
     useEffect(() => {
+        if (initialVehicles && initialVehicles.length > 0) {
+            setVehicles(initialVehicles);
+            setLoading(false);
+            return;
+        }
+
         const fetchVehicles = async () => {
             try {
                 const url = `${process.env.NEXT_PUBLIC_CMS_API_URL}/delivery/contents`;
@@ -33,7 +51,7 @@ const ListingOne = () => {
                 
                 const result = await res.json();
                 if (result.success && result.data) {
-                    setVehicles(result.data.data); // data is nested inside result.data
+                    setVehicles(result.data.data || []);
                 }
             } catch (error) {
                 console.error("Failed to fetch vehicles:", error);
@@ -43,7 +61,7 @@ const ListingOne = () => {
         };
 
         fetchVehicles();
-    }, []);
+    }, [initialVehicles]);
 
     return (
         <section className="listing-one" id='cars'>
@@ -80,14 +98,18 @@ const ListingOne = () => {
                                             1624: { slidesPerView: 5, spaceBetween: 0 }
                                         }}>
                                             {vehicles.map((item, i) => {
-                                                const fuelTaxonomy = item.taxonomy_terms_resolved?.find(t => t.taxonomy_slug === 'fuel-type');
-                                                const categoryTaxonomy = item.taxonomy_terms_resolved?.find(t => t.taxonomy_slug === 'rental-category');
-                                                const fuelType = fuelTaxonomy ? fuelTaxonomy.name : "Petrol";
-                                                const category = categoryTaxonomy ? categoryTaxonomy.name : "Self Drive";
-                                                const imageUrl = item.data?.cover_image?.file_path ? `https://cdn.one9ty.com/one9ty-travel/${item.data.cover_image.file_path}` : "/assets/images/resources/listing-1-1.png";
+                                                const fuelType = getTaxonomyTerm(item, 'fuel-type') || "Petrol";
+                                                const category = getTaxonomyTerm(item, 'rental-category') || "Self Drive";
+
+                                                const coverImg = item.data?.cover_image?.file_path;
+                                                const imageUrl = coverImg 
+                                                    ? (coverImg.startsWith('http://') || coverImg.startsWith('https://') 
+                                                        ? coverImg 
+                                                        : `https://cdn.one9ty.com/one9ty-travel/${coverImg}`) 
+                                                    : "/assets/images/resources/listing-1-1.png";
 
                                                 return (
-                                                    <SwiperSlide key={item.id || i}>
+                                                    <SwiperSlide key={item.id || item._id || i}>
                                                         <div className="item">
                                                             <div className="listing-one__single MX100">
                                                                 <div className="listing-one__img">
@@ -99,7 +121,7 @@ const ListingOne = () => {
                                                                         <ul className="list-unstyled listing-one__meta">
                                                                             <li>
                                                                                 <div className="icon"><span className="icon-manual"></span></div>
-                                                                                <div className="text"><p>Manual</p></div>
+                                                                                <div className="text"><p>{item.data?.transmission || "Manual"}</p></div>
                                                                             </li>
                                                                             <li>
                                                                                 <div className="icon"><span className="icon-mileage"></span></div>

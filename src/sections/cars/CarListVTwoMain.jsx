@@ -146,8 +146,8 @@ const CarListVTwoMain = () => {
                                     </div>
                                 ) : currentVehicles.length > 0 ? (
                                     currentVehicles.map((item, i) => {
-                                        const categoryTaxonomy = item.taxonomy_terms_resolved?.find(t => t.taxonomy_slug === 'rental-category');
-                                        const category = categoryTaxonomy ? categoryTaxonomy.name : "Self Drive";
+                                        const categoryTerm = item.terms?.find(t => t.taxonomy?.slug === 'rental-category') || item.taxonomy_terms_resolved?.find(t => t.taxonomy_slug === 'rental-category');
+                                        const category = categoryTerm ? categoryTerm.name : "Self Drive";
                                         const imageUrl = item.data?.cover_image?.file_path ? `https://cdn.one9ty.com/one9ty-travel/${item.data.cover_image.file_path}` : "/assets/images/resources/listing-1-1.png";
 
                                         return (
