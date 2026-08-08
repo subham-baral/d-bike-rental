@@ -1,11 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import sectionShape from "../../assets/images/shapes/section-title-tagline-shape-1.png";
 import { faqData } from "../../all-content/faq/faqData";
-import { motion } from "framer-motion";
-import TextAnimation from "../../components/elements/TextAnimation";
-import AdvanceCountUp from "../../components/elements/AdvanceCountUp";
 const FaqOne = () => {
   const [isActiveFaq, setIsActiveFaq] = useState(2);
   return <section className="faq-one">
@@ -25,29 +21,16 @@ const FaqOne = () => {
                                     <span className="section-title__tagline">Our Faqs</span>
                                 </div>
                                 <h2 className="section-title__title title-animation">
-                                    <TextAnimation text="Frequently Asking Any" />
-                                    <TextAnimation text="Question" />
+                                    Frequently Asked Questions
 
                                 </h2>
                             </div>
 
-                            <motion.div initial={{
-              x: -50,
-              opacity: 0
-            }} whileInView={{
-              x: 0,
-              opacity: 1
-            }} transition={{
-              duration: 0.5,
-              ease: "easeOut"
-            }} viewport={{
-              amount: 0.05,
-              once: true
-            }} className="faq-one__img-box">
+                            <div className="faq-one__img-box">
                                 <div className="faq-one__img" style={{ width: '100%', paddingRight: '20px' }}>
                                     <img src="/all-veichle-banner-for-faq.png" alt="FAQ" style={{ width: '100%', borderRadius: 'var(--gorent-bdr-radius)' }} />
                                 </div>
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
 
@@ -55,41 +38,18 @@ const FaqOne = () => {
                     <div className="col-xl-6 col-lg-7">
                         <div className="faq-one__right">
                             <div className="accrodion-grp faq-one-accrodion">
-                                {faqData.map(item => <motion.div initial={{
-                x: 50,
-                opacity: 0
-              }} whileInView={{
-                x: 0,
-                opacity: 1
-              }} transition={{
-                duration: 0.08 * item.id,
-                ease: "easeOut"
-              }} viewport={{
-                amount: 0.05,
-                once: true
-              }} key={item.id} className={`accrodion wow  ${isActiveFaq === item.id ? "active" : ""}`}>
+                                {faqData.map(item => <div key={item.id} className={`accrodion wow  ${isActiveFaq === item.id ? "active" : ""}`}>
                                         <div className="accrodion-title" onClick={() => setIsActiveFaq(item?.id)}>
                                             <h4>{item.question}</h4>
                                         </div>
-                                        <motion.div initial={{
-                  y: -40,
-                  opacity: 0
-                }} whileInView={{
-                  y: 0,
-                  opacity: 1
-                }} transition={{
-                  duration: 0.5,
-                  ease: "easeOut"
-                }} viewport={{
-                  amount: 0.05
-                }} className="accrodion-content" style={{
+                                        <div className="accrodion-content" style={{
                   display: `${isActiveFaq === item.id ? "block" : "none"}`
                 }}>
                                             <div className="inner">
                                                 <p>{item.answer}</p>
                                             </div>
-                                        </motion.div>
-                                    </motion.div>)}
+                                        </div>
+                                    </div>)}
                             </div>
                         </div>
                     </div>

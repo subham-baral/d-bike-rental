@@ -86,8 +86,8 @@ const AboutInner = () => {
                 </div>
 
                 <h2 className="section-title__title title-animation">
-                  <TextAnimation text="Welcome to D Bike" />
-                  <TextAnimation text="Vehicle Rentals" />
+                  Welcome to D Bike
+                  Vehicle Rentals
                 </h2>
               </div>
 

@@ -44,13 +44,36 @@ const fetchVehicles = async () => {
   return [];
 };
 
+const fetchTaxonomies = async () => {
+  try {
+    const url = `${process.env.NEXT_PUBLIC_CMS_API_URL}/delivery/taxonomies?content_type=vehicle`;
+    const res = await fetch(url, {
+      headers: {
+        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_CMS_API_TOKEN}`,
+        'Accept': 'application/json'
+      },
+      cache: 'no-store'
+    });
+    const json = await res.json();
+    if (json.success && json.data) {
+      return json.data;
+    }
+  } catch (err) {
+    console.error("Failed to fetch taxonomies in HomeOne:", err);
+  }
+  return [];
+};
+
 const HomeOne = async () => {
-  const vehicles = await fetchVehicles();
+  const [vehicles, taxonomies] = await Promise.all([
+    fetchVehicles(),
+    fetchTaxonomies()
+  ]);
 
   return (
     <div className='page-wrapper'>
       <Header />
-      <BannerOne />
+      <BannerOne taxonomies={taxonomies} />
       <SlidingTextOne />
       <ListingOne vehicles={vehicles} />
       <ServiceOne />

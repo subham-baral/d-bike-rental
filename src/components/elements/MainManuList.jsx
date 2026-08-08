@@ -29,7 +29,7 @@ const MainManuList = ({ onePageManuList }) => {
       <li className={currentPath === "/vehicles" ? "current" : ""}>
         <Link href="/vehicles">Vehicles</Link>
       </li>
-      <li className={`dropdown ${findLocation(blogs_link) ? "current" : ""}`}>
+      {/* <li className={`dropdown ${findLocation(blogs_link) ? "current" : ""}`}>
         <a href="#">Blog</a>
         <ul className="shadow-box">
           {blogs_link.map(Item => (
@@ -38,7 +38,7 @@ const MainManuList = ({ onePageManuList }) => {
             </li>
           ))}
         </ul>
-      </li>
+      </li> */}
       <li className={currentPath === "/contact" ? "current" : ""}>
         <Link href="/contact">Contact</Link>
       </li>

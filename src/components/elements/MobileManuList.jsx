@@ -33,7 +33,7 @@ const MobileManuList = () => {
       <li className={currentPath === "/vehicles" ? "current" : ""} onClick={closeMobileManu}>
         <Link href="/vehicles">Vehicles</Link>
       </li>
-      <li className="dropdown">
+      {/* <li className="dropdown">
         <a href="#" className={`${isBlog || findLocation(blogs_link) ? "expanded" : ""}`}>
           Blog
           <button className={`${isBlog ? "expanded" : ""}`} onClick={(e) => { e.preventDefault(); setIsBlog(pre => !pre); }}>
@@ -47,7 +47,7 @@ const MobileManuList = () => {
             </motion.li>
           ))}
         </ul>
-      </li>
+      </li> */}
       <li className={`${currentPath === "/contact" ? "current" : ""}`} onClick={closeMobileManu}>
         <Link href="/contact">Contact</Link>
       </li>

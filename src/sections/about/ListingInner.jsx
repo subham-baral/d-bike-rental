@@ -55,7 +55,7 @@ const ListingInner = () => {
                         </div>
                         <span className="section-title__tagline">Checkout our new vehicles</span>
                     </div>
-                    <h2 className="section-title__title title-animation"><TextAnimation text='Explore Most Popular Vehicles' /></h2>
+                    <h2 className="section-title__title title-animation">Explore Most Popular Vehicles</h2>
                 </div>
                 
                 {loading ? (

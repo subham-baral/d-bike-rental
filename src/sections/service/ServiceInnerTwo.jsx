@@ -26,8 +26,8 @@ const ServiceInnerTwo = ({
                         </span>
                     </div>
                     <h2 className="section-title__title title-animation">
-                        <TextAnimation text={`Services We’re Provding`} />
-                        <TextAnimation text={`to Customers`} />
+                        Services We’re Provding
+                        to Customers
                     </h2>
                 </div>
 

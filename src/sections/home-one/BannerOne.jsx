@@ -19,13 +19,13 @@ const sliderData = [{
     titleHighlight: "Scooters"
 }];
 
-const BannerOne = () => {
+const BannerOne = ({ taxonomies: initialTaxonomies }) => {
     const [swiperInstance, setSwiperInstance] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
     const router = useRouter();
 
-    const [taxonomies, setTaxonomies] = useState([]);
+    const [taxonomies, setTaxonomies] = useState(initialTaxonomies || []);
     
     // Selected IDs
     const [pickupLocation, setPickupLocation] = useState('');
@@ -34,9 +34,15 @@ const BannerOne = () => {
     const [brand, setBrand] = useState('');
 
     useEffect(() => {
+        if (initialTaxonomies && initialTaxonomies.length > 0) {
+            setTaxonomies(initialTaxonomies);
+            return;
+        }
+
         const fetchTaxonomies = async () => {
             try {
-                const res = await fetch('https://cmsapi.one9ty.com/api/v1/delivery/taxonomies?content_type=vehicle', {
+                const url = `${process.env.NEXT_PUBLIC_CMS_API_URL}/delivery/taxonomies?content_type=vehicle`;
+                const res = await fetch(url, {
                     headers: {
                         'Authorization': `Bearer ${process.env.NEXT_PUBLIC_CMS_API_TOKEN}`,
                         'Accept': 'application/json'
@@ -51,11 +57,11 @@ const BannerOne = () => {
             }
         };
         fetchTaxonomies();
-    }, []);
+    }, [initialTaxonomies]);
 
     const getTaxonomyOptions = (slug) => {
         const tax = taxonomies.find(t => t.slug === slug);
-        if (!tax || !tax.terms) return [{ value: "", label: "Loading..." }];
+        if (!tax || !tax.terms) return [{ value: "", label: "Select..." }];
         
         const defaultOption = { value: "", label: "Select..." };
         const termOptions = tax.terms.map(t => ({ value: String(t.id), label: t.name }));
@@ -91,13 +97,13 @@ const BannerOne = () => {
                             <div className="col-xl-12 col-lg-12">
                                 <div className="main-slider__content text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                     <div className="main-slider__sub-title-box">
-                                        <p className="main-slider__sub-title">Welcome to</p>
+                                        <p className="main-slider__sub-title">#1 Bike Rental Service in Puri</p>
                                     </div>
                                     <h2 className="main-slider__title">
                                         D Bike <span>Rental</span>
                                     </h2>
                                     <p className="main-slider__sub-title-two" style={{ maxWidth: '600px', fontSize: '18px', marginTop: '20px', lineHeight: '1.6', color: 'rgb(255, 255, 255)' }}>
-                                        Explore the city with freedom and ease. We offer a premium fleet of well-maintained motorcycles and scooters for an unforgettable riding experience.
+                                        Rent premium bikes and scooters at affordable prices. Explore Jagannath Temple, Golden Beach, Konark, and Chilika with reliable self-drive rentals, instant booking, and flexible rental plans.
                                     </p>
                                 </div>
                             </div>
@@ -120,15 +126,15 @@ const BannerOne = () => {
 
                                 <form className="booking-one__form" onSubmit={handleSubmit}>
                                     <div className="row">
-                                        <div className="col-xl col-lg-4 col-md-6 col-6">
+                                        {/* <div className="col-xl col-lg-4 col-md-6 col-6">
                                             <div className="booking-one__input-box" style={{ marginBottom: '15px' }}>
                                                 <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="fas fa-map-marker-alt" style={{ marginRight: "5px", color: 'var(--gorent-secondary, #EE4325)' }}></span> Pickup</p>
                                                 <div className="select-box">
                                                     <CustomSelect optionArray={getTaxonomyOptions('pickup-location')} value={pickupLocation} onChange={value => setPickupLocation(value)} /> 
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="col-xl col-lg-4 col-md-6 col-6">
+                                        </div> */}
+                                        <div className="col-xl col-lg-3 col-md-6 col-6">
                                             <div className="booking-one__input-box" style={{ marginBottom: '15px' }}>
                                                 <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="fas fa-motorcycle" style={{ marginRight: "5px", color: 'var(--gorent-secondary, #EE4325)' }}></span> Vehicle</p>
                                                 <div className="select-box">
@@ -136,7 +142,7 @@ const BannerOne = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-xl col-lg-4 col-md-6 col-6">
+                                        <div className="col-xl col-lg-3 col-md-6 col-6">
                                             <div className="booking-one__input-box" style={{ marginBottom: '15px' }}>
                                                 <p className="booking-one__input-title" style={{ marginBottom: '5px' }}><span className="fas fa-gas-pump" style={{ marginRight: "5px", color: 'var(--gorent-secondary, #EE4325)' }}></span> Fuel</p>
                                                 <div className="select-box">

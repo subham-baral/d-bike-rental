@@ -1,15 +1,16 @@
-import { Suspense } from 'react';
-import CarListVTwo from '../../../views/car-list-v-two/CarListVTwo';
+import CarListVTwo from "../../../views/car-list-v-two/CarListVTwo";
+
+export const revalidate = 86400;
 
 export const metadata = {
-  title: "Rent Bikes & Cars in Puri | Explore Our Vehicle Fleet | D Bike Rental",
-  description: "Browse our fleet of top-quality scootys, motorcycles, and cars for rent in Puri. Well-maintained vehicles at unbeatable prices for your perfect Puri trip.",
+  title: "Our Rental Bikes & Scooters in Puri | D Bike Rental | D Bike Rental",
+  description: "Choose from our range of reliable rental two-wheelers in Puri. From easy-to-ride gearless scooters to powerful bikes, find the perfect ride for your trip.",
 };
 
-export default function Page() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <CarListVTwo />
-    </Suspense>
-  );
+export default async function Page({ searchParams }) {
+  const resolvedSearchParams = await searchParams;
+  const page = Number.parseInt(resolvedSearchParams?.page ?? "1", 10);
+  const currentPage = Number.isNaN(page) || page < 1 ? 1 : page;
+
+  return <CarListVTwo currentPage={currentPage} />;
 }

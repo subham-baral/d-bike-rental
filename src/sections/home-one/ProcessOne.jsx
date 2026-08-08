@@ -17,7 +17,7 @@ const ProcessOne = () => {
                         <span className="section-title__tagline">Steps</span>
                     </div>
                     <h2 className="section-title__title title-animation">
-                        <TextAnimation text="Vehicle Rental Process" />
+                        Vehicle Rental Process
                     </h2>
                 </div>
 

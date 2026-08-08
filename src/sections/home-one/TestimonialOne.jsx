@@ -27,7 +27,7 @@ const TestimonialOne = () => {
     return colors[Math.abs(hash) % colors.length];
   };
 
-  return <section className="testimonial-one" id='testimonial'>
+  return <section className="testimonial-one" id='testimonial' style={{ marginTop: "30px" }}   >
             <div className="container">
                 <div className="section-title text-left sec-title-animation animation-style2">
                     <div className="section-title__tagline-box">
@@ -37,8 +37,7 @@ const TestimonialOne = () => {
                         <span className="section-title__tagline">Our Testimonial</span>
                     </div>
                     <h2 className="section-title__title title-animation">
-                        <TextAnimation text='What Peoples Say' />
-                        <TextAnimation text=' about D Bike Rental' />
+                       Testimonials
                     </h2>
                 </div>
                 <div className="testimonial-one__carousel owl-theme owl-carousel">

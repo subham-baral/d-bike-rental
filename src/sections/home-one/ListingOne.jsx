@@ -73,7 +73,7 @@ const ListingOne = ({ vehicles: initialVehicles }) => {
                         </div>
                         <span className="section-title__tagline">Checkout our new vehicles</span>
                     </div>
-                    <h2 className="section-title__title title-animation"><TextAnimation text='Explore Most Popular Vehicles' /></h2>
+                    <h2 className="section-title__title title-animation">Explore Most Popular Vehicles</h2>
                 </div>
                 
                 {loading ? (
@@ -113,7 +113,9 @@ const ListingOne = ({ vehicles: initialVehicles }) => {
                                                         <div className="item">
                                                             <div className="listing-one__single MX100">
                                                                 <div className="listing-one__img">
-                                                                    <img src={imageUrl} alt={item.data?.title || item.title} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
+                                                                    <Link href={`/vehicles/${item.data?.slug || item.slug}`}>
+                                                                        <img src={imageUrl} alt={item.data?.title || item.title} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
+                                                                    </Link>
                                                                 </div>
                                                                 <div className="listing-one__content">
                                                                     <h3 className="listing-one__title"><Link href={`/vehicles/${item.data?.slug || item.slug}`}>{item.data?.title || item.title}</Link></h3>

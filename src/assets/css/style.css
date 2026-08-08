@@ -10544,7 +10544,9 @@ Error Page
   margin-right: 10px;
 }
 
-.car-listing__pagination .pg-pagination li button {
+.car-listing__pagination .pg-pagination li button,
+.car-listing__pagination .pg-pagination li a,
+.car-listing__pagination .pg-pagination li span {
   height: 40px;
   width: 40px;
   text-align: center;
@@ -10563,7 +10565,9 @@ Error Page
 }
 
 .car-listing__pagination .pg-pagination li:hover button,
-.car-listing__pagination .pg-pagination li.active button {
+.car-listing__pagination .pg-pagination li:hover a,
+.car-listing__pagination .pg-pagination li.active button,
+.car-listing__pagination .pg-pagination li.active a {
   border: 1px solid var(--gorent-secondary);
   color: var(--gorent-black);
   background-color: var(--gorent-secondary);
@@ -11233,7 +11237,7 @@ Error Page
 .listing-single__right {
   position: relative;
   display: block;
-  margin-left: 225px;
+  /* margin-left: 225px; */
 }
 
 .listing-single__title-two {
@@ -24287,3 +24291,4 @@ p.main-slider__sub-title-two {
         padding-top: 0;
     }
 }
+
