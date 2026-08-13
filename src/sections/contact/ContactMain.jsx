@@ -1,73 +1,35 @@
-"use client";
+import React from 'react';
+import ContactForm from './ContactForm';
 
-import React, { useState, useEffect } from 'react';
-
-const ContactMain = () => {
-  const [formConfig, setFormConfig] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
-
-  useEffect(() => {
-    const fetchFormConfig = async () => {
-      try {
-        const token = process.env.NEXT_PUBLIC_CMS_API_TOKEN;
-        const res = await fetch('https://cmsapi.one9ty.com/api/v1/forms/5', {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/json'
-          }
-        });
-        const json = await res.json();
-        if (json && json.id) {
-          setFormConfig(json);
-        }
-      } catch (err) {
-        console.error("Error fetching form config", err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchFormConfig();
-  }, []);
-
-  const handleContactSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    
-    if (!formConfig) return;
-
-    setIsSubmitting(true);
-    setSubmitStatus(null);
-
-    const contactData = {};
-    formConfig.fields.forEach(field => {
-      const el = form.elements.namedItem(field.key);
-      if (el) {
-        contactData[field.key] = el.value;
-      }
+export async function getFormConfig() {
+  try {
+    const token = process.env.NEXT_PUBLIC_CMS_API_TOKEN;
+    const baseUrl = process.env.NEXT_PUBLIC_CMS_API_URL || 'https://cmsapi.one9ty.com/api/v1';
+    const res = await fetch(`${baseUrl}/forms/5`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json'
+      },
+      next: { revalidate: 3600 }
     });
-
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/public/forms/5/${formConfig.slug}/submit`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(contactData),
-      });
-
-      if (res.ok) {
-         setSubmitStatus('success');
-         form.reset();
-      } else {
-         setSubmitStatus('error');
-      }
-    } catch (err) {
-      console.error('Submission error:', err);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
+    if (!res.ok) {
+      console.error(`Failed to fetch form config: ${res.status}`);
+      return null;
     }
-  };
+    const json = await res.json();
+    if (json && json.id) {
+      return json;
+    }
+    return null;
+  } catch (err) {
+    console.error("Error fetching form config", err);
+    return null;
+  }
+}
+
+const ContactMain = async () => {
+  const formConfig = await getFormConfig();
 
   return (
     <>
@@ -127,67 +89,7 @@ const ContactMain = () => {
                               <h3 className="contact-page__form-title">
                                 {formConfig?.name || "Get A Free Quote"}
                               </h3>
-                              {isLoading ? (
-                                <p>Loading form...</p>
-                              ) : formConfig ? (
-                                <form onSubmit={handleContactSubmit} id="contact-form" className="contact-form-validated contact-page__form">
-                                    <div className="row">
-                                        {formConfig.fields.map(field => {
-                                            const isTextarea = field.field?.ui_component === 'textarea';
-                                            const colClass = field.width === "100" || isTextarea ? "col-xl-12" : "col-xl-6 col-lg-6 col-md-6";
-                                            return (
-                                              <div className={colClass} key={field.id}>
-                                                  <div className={`contact-page__input-box ${isTextarea ? 'text-message-box' : ''}`}>
-                                                      {isTextarea ? (
-                                                          <textarea name={field.key} placeholder={field.label} required={field.is_required === 1}></textarea>
-                                                      ) : (
-                                                          <input 
-                                                            type={field.field?.field_type || "text"} 
-                                                            name={field.key} 
-                                                            placeholder={field.label} 
-                                                            required={field.is_required === 1} 
-                                                          />
-                                                      )}
-                                                  </div>
-                                              </div>
-                                            );
-                                        })}
-                                        
-                                        <div className="col-xl-12">
-                                            <div className="contact-page__btn-box">
-                                                <button type="submit" className="thm-btn contact-page__btn" disabled={isSubmitting}>
-                                                    <span className="thm-btn-text">
-                                                      {isSubmitting ? "Sending..." : formConfig.settings?.submit_button_text || "Send A Message"}
-                                                    </span>
-                                                    <span className="thm-btn-icon-box">
-                                                        {isSubmitting ? (
-                                                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" style={{ width: '1em', height: '1em' }}></span>
-                                                        ) : (
-                                                            <i className="fas fa-arrow-right"></i>
-                                                        )}
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        {submitStatus === 'success' && (
-                                            <div className="col-xl-12 mt-4">
-                                                <div className="alert alert-success" style={{ backgroundColor: '#e8f5e9', color: '#2e7d32', border: '1px solid #c8e6c9', borderRadius: '8px' }}>
-                                                    Your message has been sent successfully! We will get back to you soon.
-                                                </div>
-                                            </div>
-                                        )}
-                                        {submitStatus === 'error' && (
-                                            <div className="col-xl-12 mt-4">
-                                                <div className="alert alert-danger" style={{ backgroundColor: '#ffebee', color: '#c62828', border: '1px solid #ffcdd2', borderRadius: '8px' }}>
-                                                    Failed to send message. Please try again.
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                </form>
-                              ) : (
-                                <p>Failed to load form data.</p>
-                              )}
+                              <ContactForm formConfig={formConfig} />
                               <p className="ajax-response mb-0"></p>
                           </div>
                       </div>
@@ -198,4 +100,5 @@ const ContactMain = () => {
     </>
   );
 };
+
 export default ContactMain;

@@ -39,8 +39,34 @@ export const getVehicleDetails = async (slug) => {
   }
 };
 
+export const getBookingFormConfig = async () => {
+  const url = `${process.env.NEXT_PUBLIC_CMS_API_URL}/forms/4`;
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_CMS_API_TOKEN}`,
+      },
+      next: { revalidate: REVALIDATE_SECONDS },
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Failed to fetch booking form config:", error);
+    return null;
+  }
+};
+
 const CarListingSingle = async ({ slug }) => {
-  const vehicle = slug ? await getVehicleDetails(slug) : null;
+  const [vehicle, formConfig] = await Promise.all([
+    slug ? getVehicleDetails(slug) : null,
+    getBookingFormConfig(),
+  ]);
 
   if (!vehicle) {
     return (
@@ -50,7 +76,7 @@ const CarListingSingle = async ({ slug }) => {
     );
   }
 
-  return <CarListingSingleMain vehicle={vehicle} />;
+  return <CarListingSingleMain vehicle={vehicle} formConfig={formConfig} />;
 };
 
 export default CarListingSingle;

@@ -54,7 +54,7 @@ const LocationPinIcon = () => (
   </svg>
 );
 
-const CarListingSingleMain = ({ vehicle }) => {
+const CarListingSingleMain = ({ vehicle, formConfig }) => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const title = vehicle?.data?.title || 'Vehicle';
@@ -631,7 +631,7 @@ const CarListingSingleMain = ({ vehicle }) => {
               </button>
             </div>
             <div className="booking-modal-body">
-              <DynamicBookingForm vehicleTitle={title} />
+              <DynamicBookingForm vehicleTitle={title} formConfig={formConfig} />
             </div>
           </div>
         </div>

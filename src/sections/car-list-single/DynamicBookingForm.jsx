@@ -2,17 +2,38 @@
 
 import React, { useState, useEffect } from 'react';
 
-const DynamicBookingForm = ({ vehicleTitle }) => {
-  const [formConfig, setFormConfig] = useState(null);
-  const [loading, setLoading] = useState(true);
+const DynamicBookingForm = ({ vehicleTitle, formConfig: initialFormConfig }) => {
+  const [formConfig, setFormConfig] = useState(initialFormConfig || null);
+  const [loading, setLoading] = useState(!initialFormConfig);
   const [submitting, setSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(() => {
+    const initialData = {};
+    if (initialFormConfig) {
+      initialFormConfig.fields?.forEach(f => {
+        if (f.key === 'vehicle_name') {
+          initialData[f.key] = vehicleTitle || '';
+        } else {
+          initialData[f.key] = '';
+        }
+      });
+      if (vehicleTitle) {
+        initialData['vehicle_name'] = vehicleTitle;
+      }
+    }
+    return initialData;
+  });
 
   useEffect(() => {
+    if (initialFormConfig) {
+      setFormConfig(initialFormConfig);
+      setLoading(false);
+      return;
+    }
     const fetchFormConfig = async () => {
       try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/forms/4`, {
+          method: 'GET',
           headers: {
             'Authorization': `Bearer ${process.env.NEXT_PUBLIC_CMS_API_TOKEN}`,
             'Content-Type': 'application/json'
@@ -42,7 +63,7 @@ const DynamicBookingForm = ({ vehicleTitle }) => {
       }
     };
     fetchFormConfig();
-  }, [vehicleTitle]);
+  }, [initialFormConfig, vehicleTitle]);
 
   useEffect(() => {
     if (vehicleTitle) {
