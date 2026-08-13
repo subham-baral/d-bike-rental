@@ -24,8 +24,7 @@ const ContactForm = ({ formConfig }) => {
     });
 
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_CMS_API_URL || 'https://cmsapi.one9ty.com/api/v1';
-      const res = await fetch(`${baseUrl}/public/forms/5/${formConfig.slug}/submit`, {
+      const res = await fetch(`/api/forms/5/${formConfig.slug}/submit`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(contactData),

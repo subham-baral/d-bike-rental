@@ -81,7 +81,8 @@ const DynamicBookingForm = ({ vehicleTitle, formConfig: initialFormConfig }) => 
     setSubmitting(true);
     setSubmitStatus(null);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/public/forms/4/booking-form/submit`, {
+      const slug = formConfig?.slug || 'booking-form';
+      const res = await fetch(`/api/forms/4/${slug}/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
