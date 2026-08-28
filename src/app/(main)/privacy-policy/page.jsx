@@ -37,8 +37,8 @@ export default function PrivacyPolicy() {
         <p>If you have questions or comments about this notice, you may email us at <a href="mailto:dbikerental1@gmail.com" style={{ color: 'var(--gorent-secondary)' }}>dbikerental1@gmail.com</a> or by post to:</p>
         <p className="mb-5">
           <strong>D Bike Rental</strong><br/>
-          Gopal Ballabh Rd, near Shakuntala Palace,<br/>
-          near Puri Railway station, Puri, Odisha 752001<br/>
+          Water Works Rd, beside Jalisahi Up school, Jalisahi<br/>
+          Puri, Odisha 752002<br/>
           Phone: <a href="tel:+918112003520" style={{ color: 'var(--gorent-secondary)' }}>+91 81120 03520</a>
         </p>
       </div>

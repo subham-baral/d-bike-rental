@@ -81,7 +81,7 @@ const ContactMain = async () => {
                   <div className="row">
                       <div className="col-xl-6">
                           <div className="contact-page__left">
-                              <iframe src="https://maps.google.com/maps?q=Gopal%20Ballabh%20Rd,%20near%20Shakuntala%20Palace,%20Puri,%20Odisha%20752001&t=&z=15&ie=UTF8&iwloc=&output=embed" className="google-map__one"></iframe>
+                              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3753.794675094444!2d85.8417111!3d19.806301100000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19c57124fa548d%3A0x2ff28d8bec72166d!2sD%20Bike%20Rental%20%7C%20Scooter%20Bike%20Rental%20in%20Puri!5e0!3m2!1sen!2sin!4v1787942391376!5m2!1sen!2sin" className="google-map__one"></iframe>
                           </div>
                       </div>
                       <div className="col-xl-6">

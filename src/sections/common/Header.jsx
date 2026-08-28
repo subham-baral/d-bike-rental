@@ -40,7 +40,7 @@ const Header = () => {
                             <i className="icon-pin-2"></i>
                         </div>
                         <div className="text">
-                            <p>Gopal Ballabh Rd, Puri, Odisha 752001</p>
+                            <p>Water Works Rd, beside Jalisahi Up school, Jalisahi, Puri, Odisha 752002</p>
                         </div>
                     </li>
                 </ul>

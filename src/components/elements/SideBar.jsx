@@ -63,7 +63,7 @@ const SideBar = () => {
                                     <ul className="list-unstyled">
                                         <li>
                                             <span className="icon-pin-2"></span>
-                                            Gopal Ballabh Rd, near Shakuntala Palace, near Puri Railway station, Puri, Odisha 752001
+                                            Water Works Rd, beside Jalisahi Up school, Jalisahi, Puri, Odisha 752002
                                         </li>
                                         <li>
                                             <span className="icon-call-2"></span>

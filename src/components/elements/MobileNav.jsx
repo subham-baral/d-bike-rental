@@ -41,7 +41,7 @@ const MobileNav = () => {
                     </li>
                     <li style={{ fontSize: '15px', display: 'flex', alignItems: 'flex-start' }}>
                         <i className="icon-pin-2" style={{ marginRight: '10px', marginTop: '4px', flexShrink: 0 }}></i>
-                        <span>Gopal Ballabh Rd, near Shakuntala Palace, near Puri Railway station, Puri, Odisha 752001</span>
+                        <span>Water Works Rd, beside Jalisahi Up school, Jalisahi, Puri, Odisha 752002</span>
                     </li>
                 </ul>
                 <div className="mobile-nav__top">

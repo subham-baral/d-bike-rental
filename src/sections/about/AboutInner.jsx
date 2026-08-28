@@ -98,7 +98,7 @@ const AboutInner = () => {
               </p>
 
               <p className="about-one__text-2">
-                Located conveniently on Gopal Ballabh Road, near Puri Railway Station, we provide the best bikes, cars, scooters, and buses for your journey.
+                Located conveniently on Water Works Rd, beside Jalisahi Up school, Jalisahi, Puri, Odisha 752002, we provide the best bikes, cars, scooters, and buses for your journey.
               </p>
 
               <ul className="about-one__progress-box list-unstyled">

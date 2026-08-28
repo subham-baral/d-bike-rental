@@ -136,7 +136,7 @@ const Footer = () => {
                     <div className="icon">
                       <span className="icon-pin"></span>
                     </div>
-                    <p>Gopal Ballabh Rd,  near Shakuntala Palace, near Puri Railway station,  Puri, Odisha 752001</p>
+                    <p>Water Works Rd, beside Jalisahi Up school, Jalisahi, Puri, Odisha 752002</p>
                   </motion.li>
                   <motion.li initial={{
                     x: 40,
