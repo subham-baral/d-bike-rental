@@ -1,16 +1,27 @@
 "use client";
 
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import SignaturePadLib from 'signature_pad';
 
 const SignaturePad = ({ value, onChange, onClear, error }) => {
   const canvasRef = useRef(null);
   const padInstanceRef = useRef(null);
   const containerRef = useRef(null);
-  const [isEmpty, setIsEmpty] = useState(true);
+  const onChangeRef = useRef(onChange);
+  const onClearRef = useRef(onClear);
+  const [isEmpty, setIsEmpty] = useState(!value);
 
-  // Resize canvas to match display size and device pixel ratio
-  const resizeCanvas = useCallback(() => {
+  // Keep callback refs updated without re-triggering canvas mount
+  useEffect(() => {
+    onChangeRef.current = onChange;
+  }, [onChange]);
+
+  useEffect(() => {
+    onClearRef.current = onClear;
+  }, [onClear]);
+
+  // Mount SignaturePad ONCE on canvas mount
+  useEffect(() => {
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
@@ -20,12 +31,6 @@ const SignaturePad = ({ value, onChange, onClear, error }) => {
     const width = rect.width || 400;
     const height = 200;
 
-    // Save existing drawing if any
-    let data = null;
-    if (padInstanceRef.current && !padInstanceRef.current.isEmpty()) {
-      data = padInstanceRef.current.toData();
-    }
-
     canvas.width = width * ratio;
     canvas.height = height * ratio;
     canvas.style.width = `${width}px`;
@@ -34,39 +39,51 @@ const SignaturePad = ({ value, onChange, onClear, error }) => {
     const ctx = canvas.getContext('2d');
     ctx.scale(ratio, ratio);
 
-    if (padInstanceRef.current) {
-      padInstanceRef.current.clear();
-      if (data) {
-        padInstanceRef.current.fromData(data);
-        setIsEmpty(false);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
     const signaturePad = new SignaturePadLib(canvas, {
       minWidth: 1.5,
       maxWidth: 3.5,
       penColor: '#0E426A',
-      backgroundColor: 'rgb(255, 255, 255)',
+      throttle: 0,
     });
 
     padInstanceRef.current = signaturePad;
-    resizeCanvas();
+
+    // Load initial signature if already present
+    if (value) {
+      signaturePad.fromDataURL(value, { ratio });
+      setIsEmpty(false);
+    }
 
     signaturePad.addEventListener('endStroke', () => {
       const empty = signaturePad.isEmpty();
       setIsEmpty(empty);
-      if (!empty && onChange) {
-        onChange(signaturePad.toDataURL('image/png'));
+      if (!empty && onChangeRef.current) {
+        onChangeRef.current(signaturePad.toDataURL('image/png'));
       }
     });
 
+    // Handle container resize cleanly without losing current strokes
     const handleResize = () => {
-      resizeCanvas();
+      if (!containerRef.current || !canvasRef.current || !padInstanceRef.current) return;
+      const newRect = containerRef.current.getBoundingClientRect();
+      const currentWidth = canvasRef.current.width / ratio;
+      // Only resize if width changed by more than 8px (avoids mobile viewport micro-shifts)
+      if (Math.abs(newRect.width - currentWidth) < 8) return;
+
+      const data = padInstanceRef.current.toData();
+      const newWidth = newRect.width;
+
+      canvas.width = newWidth * ratio;
+      canvas.height = height * ratio;
+      canvas.style.width = `${newWidth}px`;
+      canvas.style.height = `${height}px`;
+
+      ctx.scale(ratio, ratio);
+      padInstanceRef.current.clear();
+
+      if (data && data.length > 0) {
+        padInstanceRef.current.fromData(data);
+      }
     };
 
     window.addEventListener('resize', handleResize);
@@ -75,15 +92,23 @@ const SignaturePad = ({ value, onChange, onClear, error }) => {
       window.removeEventListener('resize', handleResize);
       signaturePad.off();
     };
-  }, [resizeCanvas, onChange]);
+  }, []); // Run only once on mount
+
+  // Sync external clearing
+  useEffect(() => {
+    if (!value && padInstanceRef.current && !padInstanceRef.current.isEmpty()) {
+      padInstanceRef.current.clear();
+      setIsEmpty(true);
+    }
+  }, [value]);
 
   const handleClear = (e) => {
     e.preventDefault();
     if (padInstanceRef.current) {
       padInstanceRef.current.clear();
       setIsEmpty(true);
-      if (onChange) onChange('');
-      if (onClear) onClear();
+      if (onChangeRef.current) onChangeRef.current('');
+      if (onClearRef.current) onClearRef.current();
     }
   };
 
@@ -92,12 +117,12 @@ const SignaturePad = ({ value, onChange, onClear, error }) => {
     if (padInstanceRef.current) {
       const data = padInstanceRef.current.toData();
       if (data && data.length > 0) {
-        data.pop(); // remove the last dot/stroke
+        data.pop();
         padInstanceRef.current.fromData(data);
         const empty = padInstanceRef.current.isEmpty();
         setIsEmpty(empty);
-        if (onChange) {
-          onChange(empty ? '' : padInstanceRef.current.toDataURL('image/png'));
+        if (onChangeRef.current) {
+          onChangeRef.current(empty ? '' : padInstanceRef.current.toDataURL('image/png'));
         }
       }
     }
@@ -111,7 +136,7 @@ const SignaturePad = ({ value, onChange, onClear, error }) => {
             Renter Electronic Signature <span className="req">*</span>
           </label>
           <span className="signature-hint">
-            Draw your signature using finger or mouse
+            Draw your signature using your finger, stylus, or mouse
           </span>
         </div>
         <div className="signature-actions">
@@ -141,7 +166,7 @@ const SignaturePad = ({ value, onChange, onClear, error }) => {
         className={`canvas-container ${error ? 'has-error' : ''} ${!isEmpty ? 'is-signed' : ''}`}
       >
         <canvas ref={canvasRef} className="signature-canvas" />
-        
+
         {/* Subtle baseline indicator */}
         <div className="signature-baseline">
           <span className="baseline-text">Sign Above This Line</span>

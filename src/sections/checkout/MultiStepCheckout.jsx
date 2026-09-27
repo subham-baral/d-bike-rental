@@ -5,6 +5,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import SignaturePad from './SignaturePad';
+import UpiPayButton from './UpiPayButton';
 
 // Dummy vehicle inventory simulating Laravel backend database
 export const DUMMY_VEHICLES = [
@@ -483,6 +484,16 @@ const MultiStepCheckout = () => {
                 </div>
               </div>
             </div>
+
+            {/* UPI Payment Button */}
+            <UpiPayButton
+              amount={bookingResult.fare?.total || 500}
+              upiId="9937958910-6@ybl"
+              businessName="D Bike Rental"
+              orderId={bookingResult.referenceId}
+              phone={bookingResult.phone}
+              name={bookingResult.fullName}
+            />
 
             {/* Action Buttons */}
             <div className="success-action-buttons">
