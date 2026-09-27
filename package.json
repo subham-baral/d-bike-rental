@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
     "@ramonak/react-progress-bar": "^5.4.0",
     "eslint-config-next": "^16.2.7",
     "framer-motion": "^12.23.26",
@@ -18,8 +19,11 @@
     "react-countup": "^6.5.3",
     "react-dom": "^19.2.0",
     "react-fast-marquee": "^1.6.5",
+    "react-hook-form": "^7.89.0",
     "react-intersection-observer": "^10.0.0",
-    "swiper": "^12.0.3"
+    "signature_pad": "^5.1.4",
+    "swiper": "^12.0.3",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.29.7",
